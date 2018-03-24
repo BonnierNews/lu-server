@@ -1,0 +1,18 @@
+{
+  "logging": {
+    "log": "stdout",
+    "logLevel": "debug",
+    "logJson": false
+  },
+  "requestLogging": "stdout",
+  "port": 3000,
+  "viewCaching": false,
+  "HOSTNAME": "development-pod",
+  "postgres": {
+    "user": "crm",
+    "password": "crm",
+    "host": "localhost",
+    "port": "5432",
+    "database": "crm"
+  }
+}
