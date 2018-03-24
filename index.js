@@ -4,7 +4,7 @@ const notFoundHandler = require("./lib/notFoundHandler");
 const errorHandler = require("./lib/errorHandler");
 
 function buildApp(routes) {
-  const app = require("./app");
+  const app = require("./app")();
   if (routes) {
     app.use(routes);
   }
