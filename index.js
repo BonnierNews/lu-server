@@ -14,5 +14,6 @@ function buildApp(routes) {
 }
 
 module.exports = {
-  buildApp
+  buildApp,
+  prometheus: require("./lib/prometheus")
 };
