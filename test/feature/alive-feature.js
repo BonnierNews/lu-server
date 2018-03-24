@@ -1,7 +1,7 @@
 "use strict";
 
 const request = require("supertest");
-const app = require("../../");
+const app = require("../../").app;
 
 Feature("_alive", () => {
   Scenario("Basic alive check", () => {
