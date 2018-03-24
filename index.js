@@ -5,7 +5,9 @@ const errorHandler = require("./lib/errorHandler");
 
 function buildApp(routes) {
   const app = require("./app");
-  app.use(routes);
+  if (routes) {
+    app.use(routes);
+  }
   app.use(notFoundHandler);
   app.use(errorHandler);
   return app;
@@ -13,4 +15,4 @@ function buildApp(routes) {
 
 module.exports = {
   buildApp
-}
+};

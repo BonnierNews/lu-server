@@ -6,16 +6,23 @@
   "repository": "https://github.com/bonniernews/lu-greenfield",
   "author": "LU Infra Team",
   "license": "proprietary",
+  "scripts": {
+    "mocha": "mocha",
+    "test": "mocha && eslint --ext js --ext json . --cache && depcheck"
+  },
   "dependencies": {
+    "body-parser": "^1.18.2",
     "exp-config": "^2.0.1",
     "express": "^4.16.3",
     "lu-logger": "github:BonnierNews/lu-logger#v1.3.0",
     "prom-client": "^10.2.2",
-    "request": "^2.83.0"
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "express-remove-route": "^1.0.0",
+    "depcheck": "^0.6.9",
+    "eslint": "^4.19.1",
+    "eslint-plugin-json": "^1.2.0",
     "mocha": "^5.0.5",
     "mocha-cakes-2": "^3.2.1",
     "supertest": "^3.0.0"

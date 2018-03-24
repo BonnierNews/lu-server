@@ -225,3 +225,103 @@
 2018-03-24T14:47:36.300Z - info: Didn't receive correlationId on path /error, created: 4fb1a3dc-f6c2-48ed-945d-572e689117a3 correlationId=4fb1a3dc-f6c2-48ed-945d-572e689117a3, logLevel=info
 2018-03-24T14:47:36.302Z - debug: "GET /error" 500 2 ms correlationId=4fb1a3dc-f6c2-48ed-945d-572e689117a3, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
 2018-03-24T14:47:36.301Z - error: Error received in errorHandler: Error: Foo metaData=4fb1a3dc-f6c2-48ed-945d-572e689117a3, logLevel=error
+2018-03-24T14:48:48.645Z - info: Didn't receive correlationId on path /some-path, created: c57b713f-31d6-4e52-8124-ce7bdbd7068f correlationId=c57b713f-31d6-4e52-8124-ce7bdbd7068f, logLevel=info
+2018-03-24T14:48:48.653Z - debug: "GET /some-path" 200 9 ms correlationId=c57b713f-31d6-4e52-8124-ce7bdbd7068f, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:48:48.674Z - info: Didn't receive correlationId on path /unknown, created: a9584001-e370-4cf9-9bc9-2e6419d352ee correlationId=a9584001-e370-4cf9-9bc9-2e6419d352ee, logLevel=info
+2018-03-24T14:48:48.675Z - debug: "GET /unknown" 404 2 ms correlationId=a9584001-e370-4cf9-9bc9-2e6419d352ee, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:48:48.683Z - info: Didn't receive correlationId on path /error, created: a676cdb0-7940-40aa-85b6-efbb7ea803a6 correlationId=a676cdb0-7940-40aa-85b6-efbb7ea803a6, logLevel=info
+2018-03-24T14:48:48.685Z - debug: "GET /error" 500 2 ms correlationId=a676cdb0-7940-40aa-85b6-efbb7ea803a6, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:48:48.684Z - error: Error received in errorHandler: Error: Foo metaData=a676cdb0-7940-40aa-85b6-efbb7ea803a6, logLevel=error
+2018-03-24T14:50:59.665Z - info: Didn't receive correlationId on path /some-path, created: 51ca469a-57e5-4f5c-a3ad-c02de00b9c48 correlationId=51ca469a-57e5-4f5c-a3ad-c02de00b9c48, logLevel=info
+2018-03-24T14:50:59.669Z - debug: "GET /some-path" 404 5 ms correlationId=51ca469a-57e5-4f5c-a3ad-c02de00b9c48, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:50:59.676Z - info: Didn't receive correlationId on path /unknown, created: e7c2f1cf-b53d-46c7-affd-f33bbbd7ee8a correlationId=e7c2f1cf-b53d-46c7-affd-f33bbbd7ee8a, logLevel=info
+2018-03-24T14:50:59.677Z - debug: "GET /unknown" 404 1 ms correlationId=e7c2f1cf-b53d-46c7-affd-f33bbbd7ee8a, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:50:59.683Z - info: Didn't receive correlationId on path /error, created: e51b7378-233a-4870-bdb7-196423d6a7b9 correlationId=e51b7378-233a-4870-bdb7-196423d6a7b9, logLevel=info
+2018-03-24T14:50:59.684Z - debug: "GET /error" 404 1 ms correlationId=e51b7378-233a-4870-bdb7-196423d6a7b9, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:51:36.007Z - info: Didn't receive correlationId on path /some-path, created: b1388c2f-3086-49bc-a2fb-79a02a11b2c4 correlationId=b1388c2f-3086-49bc-a2fb-79a02a11b2c4, logLevel=info
+2018-03-24T14:51:36.014Z - debug: "GET /some-path" 404 10 ms correlationId=b1388c2f-3086-49bc-a2fb-79a02a11b2c4, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:51:36.024Z - info: Didn't receive correlationId on path /unknown, created: 18307768-6837-47d0-990e-442824d2ae1f correlationId=18307768-6837-47d0-990e-442824d2ae1f, logLevel=info
+2018-03-24T14:51:36.025Z - debug: "GET /unknown" 404 1 ms correlationId=18307768-6837-47d0-990e-442824d2ae1f, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:51:36.034Z - info: Didn't receive correlationId on path /error, created: aef9072a-1a83-45f3-a084-32d256ee8069 correlationId=aef9072a-1a83-45f3-a084-32d256ee8069, logLevel=info
+2018-03-24T14:51:36.035Z - debug: "GET /error" 404 1 ms correlationId=aef9072a-1a83-45f3-a084-32d256ee8069, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:54:49.150Z - info: Didn't receive correlationId on path /some-path, created: 1ddd032c-016e-4619-afad-01f43b406d0f correlationId=1ddd032c-016e-4619-afad-01f43b406d0f, logLevel=info
+2018-03-24T14:54:49.154Z - debug: "GET /some-path" 404 5 ms correlationId=1ddd032c-016e-4619-afad-01f43b406d0f, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:54:49.162Z - info: Didn't receive correlationId on path /unknown, created: 31745800-bafa-4ee7-83f4-e4f3aa19c8ac correlationId=31745800-bafa-4ee7-83f4-e4f3aa19c8ac, logLevel=info
+2018-03-24T14:54:49.163Z - debug: "GET /unknown" 404 1 ms correlationId=31745800-bafa-4ee7-83f4-e4f3aa19c8ac, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:54:49.170Z - info: Didn't receive correlationId on path /error, created: b4560158-fe39-45a3-9779-162134e1dbb1 correlationId=b4560158-fe39-45a3-9779-162134e1dbb1, logLevel=info
+2018-03-24T14:54:49.170Z - debug: "GET /error" 404 0 ms correlationId=b4560158-fe39-45a3-9779-162134e1dbb1, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:55:33.304Z - info: Didn't receive correlationId on path /some-path, created: fb44dd89-c2a7-4656-bd16-420f7f1c4210 correlationId=fb44dd89-c2a7-4656-bd16-420f7f1c4210, logLevel=info
+2018-03-24T14:55:33.312Z - debug: "GET /some-path" 200 10 ms correlationId=fb44dd89-c2a7-4656-bd16-420f7f1c4210, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:55:33.330Z - info: Didn't receive correlationId on path /unknown, created: 696e7d24-0fcd-431b-b5e8-965c3596883f correlationId=696e7d24-0fcd-431b-b5e8-965c3596883f, logLevel=info
+2018-03-24T14:55:33.331Z - debug: "GET /unknown" 404 1 ms correlationId=696e7d24-0fcd-431b-b5e8-965c3596883f, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:55:33.340Z - info: Didn't receive correlationId on path /error, created: bda5471f-e594-490c-8004-4e1314227a4e correlationId=bda5471f-e594-490c-8004-4e1314227a4e, logLevel=info
+2018-03-24T14:55:33.341Z - debug: "GET /error" 500 2 ms correlationId=bda5471f-e594-490c-8004-4e1314227a4e, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:55:33.340Z - error: Error received in errorHandler: Error: Foo metaData=bda5471f-e594-490c-8004-4e1314227a4e, logLevel=error
+2018-03-24T14:58:03.964Z - info: Didn't receive correlationId on path /some-path, created: 7b873b43-b5fe-4ea7-87f4-68ce818999c5 correlationId=7b873b43-b5fe-4ea7-87f4-68ce818999c5, logLevel=info
+2018-03-24T14:58:03.973Z - debug: "GET /some-path" 200 11 ms correlationId=7b873b43-b5fe-4ea7-87f4-68ce818999c5, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:58:03.988Z - info: Didn't receive correlationId on path /unknown, created: 5da37ed7-202d-4b06-bdf9-b75d35fea46d correlationId=5da37ed7-202d-4b06-bdf9-b75d35fea46d, logLevel=info
+2018-03-24T14:58:03.990Z - debug: "GET /unknown" 404 3 ms correlationId=5da37ed7-202d-4b06-bdf9-b75d35fea46d, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:58:03.995Z - info: Didn't receive correlationId on path /error, created: 41623904-e9d2-4cbc-9089-355432501005 correlationId=41623904-e9d2-4cbc-9089-355432501005, logLevel=info
+2018-03-24T14:58:03.997Z - debug: "GET /error" 500 1 ms correlationId=41623904-e9d2-4cbc-9089-355432501005, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:58:03.996Z - error: Error received in errorHandler: Error: Foo metaData=41623904-e9d2-4cbc-9089-355432501005, logLevel=error
+2018-03-24T14:58:16.826Z - info: Didn't receive correlationId on path /some-path, created: 90c76dca-c5da-4c61-a057-b2ffa19aab4c correlationId=90c76dca-c5da-4c61-a057-b2ffa19aab4c, logLevel=info
+2018-03-24T14:58:16.828Z - debug: "GET /some-path" 404 4 ms correlationId=90c76dca-c5da-4c61-a057-b2ffa19aab4c, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:58:16.834Z - info: Didn't receive correlationId on path /unknown, created: 30fc3f1e-4d32-4cf2-bddf-8ff7b077e90c correlationId=30fc3f1e-4d32-4cf2-bddf-8ff7b077e90c, logLevel=info
+2018-03-24T14:58:16.835Z - debug: "GET /unknown" 404 1 ms correlationId=30fc3f1e-4d32-4cf2-bddf-8ff7b077e90c, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:58:16.841Z - info: Didn't receive correlationId on path /error, created: 28dc95ea-1fe0-4b59-a430-219b6a441909 correlationId=28dc95ea-1fe0-4b59-a430-219b6a441909, logLevel=info
+2018-03-24T14:58:16.841Z - debug: "GET /error" 404 0 ms correlationId=28dc95ea-1fe0-4b59-a430-219b6a441909, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:58:25.976Z - info: Didn't receive correlationId on path /some-path, created: 0dd5ed70-597c-42e4-8383-1ede15d15f63 correlationId=0dd5ed70-597c-42e4-8383-1ede15d15f63, logLevel=info
+2018-03-24T14:58:25.985Z - debug: "GET /some-path" 200 10 ms correlationId=0dd5ed70-597c-42e4-8383-1ede15d15f63, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:58:25.997Z - info: Didn't receive correlationId on path /unknown, created: e83e230b-b504-49fb-8835-27aae12c8b5b correlationId=e83e230b-b504-49fb-8835-27aae12c8b5b, logLevel=info
+2018-03-24T14:58:25.999Z - debug: "GET /unknown" 404 2 ms correlationId=e83e230b-b504-49fb-8835-27aae12c8b5b, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:58:26.005Z - info: Didn't receive correlationId on path /error, created: f17c52de-297f-4c79-9c3d-93568737f68e correlationId=f17c52de-297f-4c79-9c3d-93568737f68e, logLevel=info
+2018-03-24T14:58:26.007Z - debug: "GET /error" 500 2 ms correlationId=f17c52de-297f-4c79-9c3d-93568737f68e, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:58:26.006Z - error: Error received in errorHandler: Error: Foo metaData=f17c52de-297f-4c79-9c3d-93568737f68e, logLevel=error
+2018-03-24T14:58:28.091Z - info: Didn't receive correlationId on path /some-path, created: 3c78723b-1da2-435a-9020-22995aeceb66 correlationId=3c78723b-1da2-435a-9020-22995aeceb66, logLevel=info
+2018-03-24T14:58:28.093Z - debug: "GET /some-path" 404 4 ms correlationId=3c78723b-1da2-435a-9020-22995aeceb66, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:58:28.100Z - info: Didn't receive correlationId on path /unknown, created: 556f0a03-80cd-4f1e-a83d-027499f3711a correlationId=556f0a03-80cd-4f1e-a83d-027499f3711a, logLevel=info
+2018-03-24T14:58:28.102Z - debug: "GET /unknown" 404 2 ms correlationId=556f0a03-80cd-4f1e-a83d-027499f3711a, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T14:58:28.109Z - info: Didn't receive correlationId on path /error, created: 23db2e6f-c1c4-433b-a535-a394d5a0bf95 correlationId=23db2e6f-c1c4-433b-a535-a394d5a0bf95, logLevel=info
+2018-03-24T14:58:28.109Z - debug: "GET /error" 404 0 ms correlationId=23db2e6f-c1c4-433b-a535-a394d5a0bf95, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:01:43.601Z - info: Didn't receive correlationId on path /some-path, created: 49762517-df54-42f3-86bc-9ef89c8573c3 correlationId=49762517-df54-42f3-86bc-9ef89c8573c3, logLevel=info
+2018-03-24T15:01:43.604Z - debug: "GET /some-path" 200 3 ms correlationId=49762517-df54-42f3-86bc-9ef89c8573c3, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:01:43.611Z - info: Didn't receive correlationId on path /unknown, created: 4f610f43-12ae-4eb5-834b-eee032774fe6 correlationId=4f610f43-12ae-4eb5-834b-eee032774fe6, logLevel=info
+2018-03-24T15:01:43.612Z - debug: "GET /unknown" 404 1 ms correlationId=4f610f43-12ae-4eb5-834b-eee032774fe6, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:01:43.616Z - info: Didn't receive correlationId on path /error, created: cceb053c-add8-4715-a62d-4e75d6433425 correlationId=cceb053c-add8-4715-a62d-4e75d6433425, logLevel=info
+2018-03-24T15:01:43.617Z - debug: "GET /error" 500 1 ms correlationId=cceb053c-add8-4715-a62d-4e75d6433425, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:01:43.616Z - error: Error received in errorHandler: Error: Foo metaData=cceb053c-add8-4715-a62d-4e75d6433425, logLevel=error
+2018-03-24T15:02:08.465Z - info: Didn't receive correlationId on path /some-path, created: 0adff2a3-d629-431e-b30c-2e1b37812b67 correlationId=0adff2a3-d629-431e-b30c-2e1b37812b67, logLevel=info
+2018-03-24T15:02:08.480Z - debug: "GET /some-path" 200 9 ms correlationId=0adff2a3-d629-431e-b30c-2e1b37812b67, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:02:08.497Z - info: Didn't receive correlationId on path /unknown, created: 2c309c09-bee9-4f8a-bd03-f5a4dd1a2e3b correlationId=2c309c09-bee9-4f8a-bd03-f5a4dd1a2e3b, logLevel=info
+2018-03-24T15:02:08.502Z - debug: "GET /unknown" 404 9 ms correlationId=2c309c09-bee9-4f8a-bd03-f5a4dd1a2e3b, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:02:08.518Z - info: Didn't receive correlationId on path /error, created: 0efa6178-8fd1-4f58-a6a3-5d502d7ad4b8 correlationId=0efa6178-8fd1-4f58-a6a3-5d502d7ad4b8, logLevel=info
+2018-03-24T15:02:08.523Z - debug: "GET /error" 500 5 ms correlationId=0efa6178-8fd1-4f58-a6a3-5d502d7ad4b8, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:02:08.520Z - error: Error received in errorHandler: Error: Foo metaData=0efa6178-8fd1-4f58-a6a3-5d502d7ad4b8, logLevel=error
+2018-03-24T15:02:36.556Z - info: Didn't receive correlationId on path /some-path, created: d445e22a-b1f4-4dc0-a82b-830b62ffdeee correlationId=d445e22a-b1f4-4dc0-a82b-830b62ffdeee, logLevel=info
+2018-03-24T15:02:36.559Z - debug: "GET /some-path" 200 5 ms correlationId=d445e22a-b1f4-4dc0-a82b-830b62ffdeee, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:02:36.566Z - info: Didn't receive correlationId on path /unknown, created: 499ea2f7-052a-40aa-a716-0b495cf2bdf5 correlationId=499ea2f7-052a-40aa-a716-0b495cf2bdf5, logLevel=info
+2018-03-24T15:02:36.569Z - debug: "GET /unknown" 404 3 ms correlationId=499ea2f7-052a-40aa-a716-0b495cf2bdf5, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:02:36.575Z - info: Didn't receive correlationId on path /error, created: bdfb03d5-6d40-4c4c-9991-1977e2bb1bab correlationId=bdfb03d5-6d40-4c4c-9991-1977e2bb1bab, logLevel=info
+2018-03-24T15:02:36.577Z - debug: "GET /error" 500 2 ms correlationId=bdfb03d5-6d40-4c4c-9991-1977e2bb1bab, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:02:36.576Z - error: Error received in errorHandler: Error: Foo metaData=bdfb03d5-6d40-4c4c-9991-1977e2bb1bab, logLevel=error
+2018-03-24T15:09:34.278Z - info: Didn't receive correlationId on path /some-path, created: 39332624-8ce9-4723-bc7e-62dd0c4ef053 correlationId=39332624-8ce9-4723-bc7e-62dd0c4ef053, logLevel=info
+2018-03-24T15:09:34.281Z - debug: "GET /some-path" 200 4 ms correlationId=39332624-8ce9-4723-bc7e-62dd0c4ef053, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:09:34.286Z - info: Didn't receive correlationId on path /unknown, created: c4890224-026f-4003-99d6-6d1ad3cc1aaf correlationId=c4890224-026f-4003-99d6-6d1ad3cc1aaf, logLevel=info
+2018-03-24T15:09:34.287Z - debug: "GET /unknown" 404 1 ms correlationId=c4890224-026f-4003-99d6-6d1ad3cc1aaf, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:09:34.293Z - info: Didn't receive correlationId on path /error, created: c061675c-cdec-4262-a03a-9970804cf378 correlationId=c061675c-cdec-4262-a03a-9970804cf378, logLevel=info
+2018-03-24T15:09:34.294Z - debug: "GET /error" 500 1 ms correlationId=c061675c-cdec-4262-a03a-9970804cf378, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:09:34.293Z - error: Error received in errorHandler: Error: Foo metaData=c061675c-cdec-4262-a03a-9970804cf378, logLevel=error
+2018-03-24T15:09:51.915Z - info: Didn't receive correlationId on path /some-path, created: 42009039-f907-438c-8555-029f03448051 correlationId=42009039-f907-438c-8555-029f03448051, logLevel=info
+2018-03-24T15:09:51.918Z - debug: "GET /some-path" 200 4 ms correlationId=42009039-f907-438c-8555-029f03448051, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:09:51.926Z - info: Didn't receive correlationId on path /unknown, created: 21d766db-18ac-4e90-ade8-a463a3861b4c correlationId=21d766db-18ac-4e90-ade8-a463a3861b4c, logLevel=info
+2018-03-24T15:09:51.927Z - debug: "GET /unknown" 404 1 ms correlationId=21d766db-18ac-4e90-ade8-a463a3861b4c, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:09:51.932Z - info: Didn't receive correlationId on path /error, created: 86794f19-bf9f-45f5-a7af-5ca0388c3c0c correlationId=86794f19-bf9f-45f5-a7af-5ca0388c3c0c, logLevel=info
+2018-03-24T15:09:51.933Z - debug: "GET /error" 500 1 ms correlationId=86794f19-bf9f-45f5-a7af-5ca0388c3c0c, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:09:51.933Z - error: Error received in errorHandler: Error: Foo metaData=86794f19-bf9f-45f5-a7af-5ca0388c3c0c, logLevel=error
+2018-03-24T15:10:37.776Z - info: Didn't receive correlationId on path /some-path, created: 91bdada4-371e-4838-b036-87cc27d76440 correlationId=91bdada4-371e-4838-b036-87cc27d76440, logLevel=info
+2018-03-24T15:10:37.778Z - debug: "GET /some-path" 200 4 ms correlationId=91bdada4-371e-4838-b036-87cc27d76440, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:10:37.785Z - info: Didn't receive correlationId on path /unknown, created: a0f08296-3cbe-4071-90fc-40583dcfe607 correlationId=a0f08296-3cbe-4071-90fc-40583dcfe607, logLevel=info
+2018-03-24T15:10:37.786Z - debug: "GET /unknown" 404 1 ms correlationId=a0f08296-3cbe-4071-90fc-40583dcfe607, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:10:37.790Z - info: Didn't receive correlationId on path /error, created: acf4b5c0-e2f4-404c-b42d-972835707653 correlationId=acf4b5c0-e2f4-404c-b42d-972835707653, logLevel=info
+2018-03-24T15:10:37.791Z - debug: "GET /error" 500 1 ms correlationId=acf4b5c0-e2f4-404c-b42d-972835707653, location=/Users/jens/code/work/Bonnier/lu-greenfield/lu-server/lib/middleware.js:20, logLevel=debug
+2018-03-24T15:10:37.791Z - error: Error received in errorHandler: Error: Foo metaData=acf4b5c0-e2f4-404c-b42d-972835707653, logLevel=error

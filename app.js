@@ -1,13 +1,9 @@
 "use strict";
 
 const express = require("express");
-const config = require("exp-config");
 const http = require("http");
 const https = require("https");
 const bodyParser = require("body-parser");
-
-const logger = require("lu-logger")(config.logging);
-const errorHandler = require("./lib/errorHandler");
 const middleware = require("./lib/middleware.js");
 const routes = require("./lib/routes.js");
 
@@ -26,7 +22,5 @@ process.env.TZ = "Europe/Stockholm";
 app.disable("x-powered-by");
 app.use(middleware);
 app.use(routes);
-
-const packageInfo = require("./package.json");
 
 module.exports = app;

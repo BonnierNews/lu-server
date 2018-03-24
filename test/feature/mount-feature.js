@@ -1,19 +1,9 @@
 "use strict";
 
-const express = require("express");
 const request = require("supertest");
-const buildApp = require("../../").buildApp;
-let app = null
-
+const app = require("../helpers/app");
 
 Feature("App mounting", () => {
-  before(() => {
-    const router = express.Router();
-    router.get("/some-path", (req, res) => { res.status(200).send("Yes"); })
-    router.get("/error", (req, res, next) => { next(new Error("Foo")); })
-    app = buildApp(router)
-  })
-
   Scenario("Mounting routes to an app", () => {
     Given("A router with some routes", () => {});
     When("Requesting and return status code will return 200 Yes", (done) => {
@@ -33,7 +23,7 @@ Feature("App mounting", () => {
       request(app)
         .get("/unknown")
         .expect(404)
-        .expect('Content-Type', /json/)
+        .expect("Content-Type", /json/)
         .end((err, res) => {
           if (err) return done(err);
           res.body.should.eql({
@@ -57,7 +47,7 @@ Feature("App mounting", () => {
       request(app)
         .get("/error")
         .expect(500)
-        .expect('Content-Type', /json/)
+        .expect("Content-Type", /json/)
         .end((err, res) => {
           if (err) return done(err);
           res.body.should.eql({
