@@ -14,5 +14,6 @@
     "host": "localhost",
     "port": "5432",
     "database": "crm"
-  }
+  },
+  "bugsnagApiKey": "17a18b1f8838eeb3e7774a12a4fa2fe1"
 }

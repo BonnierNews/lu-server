@@ -6,10 +6,22 @@ const https = require("https");
 const bodyParser = require("body-parser");
 const middleware = require("./lib/middleware.js");
 const routes = require("./lib/routes.js");
+const config = require("exp-config");
+const bugsnag = require("bugsnag");
 
-module.exports = () => {
+if (config.bugsnagApiKey) {
+  bugsnag.register(config.bugsnagApiKey);
+}
+
+function init() {
+
   const app = express();
 
+  if (config.bugsnagApiKey) {
+    app.use(bugsnag.requestHandler);
+  }
+
+  app.disable("x-powered-by");
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.text({ type: "text/*" }));
   app.use(bodyParser.json());
@@ -20,9 +32,10 @@ module.exports = () => {
 
   process.env.TZ = "Europe/Stockholm";
 
-  app.disable("x-powered-by");
   app.use(middleware);
   app.use(routes);
 
   return app;
-};
+}
+
+module.exports = init;
