@@ -1,5 +1,7 @@
 "use strict";
 
+const config = require("exp-config");
+const bugsnag = require("bugsnag");
 const notFoundHandler = require("./lib/notFoundHandler");
 const errorHandler = require("./lib/errorHandler");
 
