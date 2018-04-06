@@ -11,10 +11,11 @@ function buildApp(routes) {
     app.use(routes);
   }
   app.use(notFoundHandler);
-  app.use(errorHandler);
+  // Bugsnag should be the first error handler
   if (config.bugsnagApiKey) {
     app.use(bugsnag.errorHandler);
   }
+  app.use(errorHandler);
 
   return app;
 }

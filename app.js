@@ -35,15 +35,6 @@ function init() {
   app.use(middleware);
   app.use(routes);
 
-  // Bugsnag should be the first error handler
-  if (config.bugsnagApiKey) {
-    app.use(bugsnag.errorHandler);
-  }
-
-  app.use(errorHandler);
-
-  listeners.initListeners();
-
   return app;
 }
 
