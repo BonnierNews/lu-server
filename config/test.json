@@ -4,5 +4,6 @@
     "logLevel": "debug",
     "logJson": false
   },
-  "requestLogging": "file"
+  "requestLogging": "file",
+  "bugsnagApiKey": null
 }
