@@ -176,6 +176,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
+bindings@~1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.1.1.tgz#951f7ae010302ffc50b265b124032017ed2bf6f3"
+
 bintrees@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/bintrees/-/bintrees-1.0.1.tgz#0e655c9b9c2435eaab68bf4027226d2b55a34524"
@@ -438,7 +442,7 @@ cuid@^1.3.8:
     core-js "^1.1.1"
     node-fingerprint "0.0.2"
 
-cycle@1.0.x:
+cycle@1.0.x, cycle@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/cycle/-/cycle-1.0.3.tgz#21e80b2be8580f98b468f379430662b046c34ad2"
 
@@ -917,6 +921,10 @@ globby@^5.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
+glossy@0.x.x:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/glossy/-/glossy-0.1.7.tgz#769b5984a96f6066ab9ea758224825ee6c210f0b"
+
 graceful-fs@^4.1.2:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
@@ -1229,12 +1237,13 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
-"lu-logger@github:BonnierNews/lu-logger#v1.3.0":
-  version "1.3.0"
-  resolved "https://codeload.github.com/BonnierNews/lu-logger/tar.gz/9bbc5acec681a51b458fb316c46ad50e6613e868"
+"lu-logger@github:BonnierNews/lu-logger#v1.4.0":
+  version "1.4.0"
+  resolved "https://codeload.github.com/BonnierNews/lu-logger/tar.gz/e1c675c42cd996223398700f3fff8d817e186d95"
   dependencies:
     prom-client "^10.2.2"
     winston "^2.4.0"
+    winston-syslog "^1.0.0"
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -1318,6 +1327,10 @@ ms@2.0.0:
 mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
+
+nan@~2.3.2:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.3.5.tgz#822a0dc266290ce4cd3a12282ca3e7e364668a08"
 
 natural-compare@^1.4.0:
   version "1.4.0"
@@ -1952,6 +1965,13 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
+unix-dgram@~0.2.1:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/unix-dgram/-/unix-dgram-0.2.3.tgz#eab7330f1f1041d48f9c179d9f4c5a996cafceb5"
+  dependencies:
+    bindings "~1.1.1"
+    nan "~2.3.2"
+
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
@@ -2000,6 +2020,15 @@ which@^1.2.9:
   resolved "https://registry.yarnpkg.com/which/-/which-1.3.0.tgz#ff04bdfc010ee547d780bec38e1ac1c2777d253a"
   dependencies:
     isexe "^2.0.0"
+
+winston-syslog@^1.0.0:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/winston-syslog/-/winston-syslog-1.2.6.tgz#4e7990ed0a9f1932187ddd6ec9e038357980961f"
+  dependencies:
+    cycle "~1.0.3"
+    glossy "0.x.x"
+  optionalDependencies:
+    unix-dgram "~0.2.1"
 
 winston@^2.4.0:
   version "2.4.1"
