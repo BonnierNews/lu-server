@@ -62,4 +62,19 @@ Feature("App mounting", () => {
         });
     });
   });
+
+  Scenario("Error handling after timeout", () => {
+
+    Given("A router with a routes that yields an error after timeout", () => {});
+
+    When("Requesting an unknown route will return 500 json", (done) => {
+      request(app)
+        .get("/timeouterror")
+        .timeout(1)
+        .end((err) => {
+          if (err) return done();
+          return done(new Error("Should have died with a timeout error"));
+        });
+    });
+  });
 });

@@ -1237,9 +1237,9 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
-"lu-logger@github:BonnierNews/lu-logger#v1.5.0":
-  version "1.5.0"
-  resolved "https://codeload.github.com/BonnierNews/lu-logger/tar.gz/b090e98eeb53a48f4db0a61593d64f02f8aa4b88"
+"lu-logger@github:BonnierNews/lu-logger#v1.6.0":
+  version "1.6.0"
+  resolved "https://codeload.github.com/BonnierNews/lu-logger/tar.gz/72dd293b2c829d9e234097152d4fddc4a55ad538"
   dependencies:
     prom-client "^10.2.2"
     winston "^2.4.0"

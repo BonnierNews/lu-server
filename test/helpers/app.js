@@ -9,5 +9,8 @@ router.get("/some-path", (req, res) => {
 router.get("/error", (req, res, next) => {
   next(new Error("Foo"));
 });
+router.get("/timeouterror", (req, res, next) => {
+  setTimeout(() => next(new Error("we did timeout")), 10);
+});
 
 module.exports = buildApp(router);
