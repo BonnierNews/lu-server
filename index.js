@@ -4,6 +4,7 @@ const config = require("exp-config");
 const bugsnag = require("bugsnag");
 const notFoundHandler = require("./lib/notFoundHandler");
 const errorHandler = require("./lib/errorHandler");
+const shutdownHandler = require("./lib/shutdownHandler");
 
 function buildApp(routes) {
   const app = require("./app")();
@@ -22,5 +23,6 @@ function buildApp(routes) {
 
 module.exports = {
   buildApp,
-  prometheus: require("./lib/prometheus")
+  prometheus: require("./lib/prometheus"),
+  shutdownHandler
 };
