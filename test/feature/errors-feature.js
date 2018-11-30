@@ -19,7 +19,7 @@ Feature("Error handling", () => {
     });
   });
 
-  Scenario.only("Correlation id feature, correlation id sent", () => {
+  Scenario("Correlation id feature, correlation id sent", () => {
     Given("A route", () => {});
     When("Requesting with a correlation id shold return 200 Yes with the correlation id set", (done) => {
       request(app)
