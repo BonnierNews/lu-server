@@ -29,6 +29,7 @@ Feature("Error handling", () => {
         .end((err, res) => {
           if (err) return done(err);
           expect(res.headers["correlation-id"]).to.equal("foo");
+          expect(res.body.meta.correlationId.should.eql("foo"));
           done();
         });
     });

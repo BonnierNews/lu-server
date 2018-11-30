@@ -82,13 +82,18 @@ Feature("App mounting", () => {
         .expect("Content-Type", /json/)
         .end((err, res) => {
           if (err) return done(err);
+          const correlationId = res.headers["correlation-id"];
+          expect(correlationId).to.have.length(36);
           res.body.should.eql({
             errors: [{
               status: "500",
               title: "Server Error",
               detail: "GET /error: Error: Foo",
               source: "/error"
-            }]
+            }],
+            meta: {
+              correlationId
+            }
           });
           done();
         });
