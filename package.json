@@ -8,7 +8,9 @@
   "license": "proprietary",
   "scripts": {
     "mocha": "mocha",
-    "test": "mocha && eslint --ext js --ext json . --cache && depcheck"
+    "lint": "eslint .",
+    "test": "mocha && eslint --ext js --ext json . --cache && depcheck --ignores=\"prettier\"",
+    "format": "prettier **/*.js --write && eslint . --fix"
   },
   "dependencies": {
     "@moebius/http-graceful-shutdown": "^1.1.0",
@@ -20,6 +22,9 @@
     "prom-client": "^10.2.2",
     "uuid": "^3.2.1"
   },
+  "resolutions": {
+    "lu-logger/winston-syslog/unix-dgram": "^2.0.2"
+  },
   "devDependencies": {
     "chai": "^4.1.2",
     "depcheck": "^0.6.9",
@@ -27,6 +32,7 @@
     "eslint-plugin-json": "^1.2.0",
     "mocha": "^5.0.5",
     "mocha-cakes-2": "^3.2.1",
+    "prettier": "^1.15.3",
     "supertest": "^3.0.0"
   }
 }
