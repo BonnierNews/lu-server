@@ -16,5 +16,4 @@ router.get("/bork", () => {
   throw new Error("Bork!");
 });
 
-
 module.exports = buildApp(router);

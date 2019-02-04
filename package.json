@@ -1,6 +1,6 @@
 {
   "name": "lu-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Base server for lu services",
   "main": "index.js",
   "repository": "https://github.com/bonniernews/lu-greenfield",
@@ -18,7 +18,7 @@
     "bugsnag": "^2.3.1",
     "exp-config": "^2.0.1",
     "express": "^4.16.3",
-    "lu-logger": "github:BonnierNews/lu-logger#v1.7.0",
+    "lu-logger": "github:BonnierNews/lu-logger#v2.1.1",
     "prom-client": "^10.2.2",
     "uuid": "^3.2.1"
   },
