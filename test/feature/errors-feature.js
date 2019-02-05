@@ -1,7 +1,7 @@
 "use strict";
 
 const request = require("supertest");
-const app = require("../helpers/app");
+const {app} = require("../helpers/app");
 const expect = require("chai").expect;
 
 Feature("Error handling", () => {

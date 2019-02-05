@@ -16,7 +16,7 @@ router.get("/timeouterror", (req, res, next) => {
   requests.push({req, res});
   setTimeout(() => next(new Error("we did timeout")), 10);
 });
-router.get("/bork", () => {
+router.get("/bork", (req, res) => {
   requests.push({req, res});
   throw new Error("Bork!");
 });
@@ -31,4 +31,4 @@ module.exports = {
   router,
   reset,
   app: buildApp(router)
-}
+};
