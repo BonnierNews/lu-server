@@ -1,7 +1,7 @@
 "use strict";
 
 const request = require("supertest");
-const app = require("../helpers/app");
+const {app} = require("../helpers/app");
 const expect = require("chai").expect;
 
 Feature("App mounting", () => {
@@ -37,6 +37,18 @@ Feature("App mounting", () => {
       request(app)
         .get("/some-path")
         .set("correlation-id", "foo")
+        .expect(200)
+        .expect("Yes")
+        .end((err, res) => {
+          if (err) return done(err);
+          expect(res.headers["correlation-id"]).to.equal("foo");
+          done();
+        });
+    });
+    When("Requesting with a x-correlation-id shold return 200 Yes with the correlation id set", (done) => {
+      request(app)
+        .get("/some-path")
+        .set("x-correlation-id", "foo")
         .expect(200)
         .expect("Yes")
         .end((err, res) => {
