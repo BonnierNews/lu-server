@@ -5,12 +5,11 @@ const {app} = require("../helpers/app");
 
 Feature("_alive", () => {
   Scenario("Basic alive check", () => {
-    When("Requesting /_alive will return 200 Yes", (done) => {
-      request(app)
+    When("Requesting /_alive will return 200 Yes", async () => {
+      await request(app)
         .get("/_alive")
         .expect(200)
-        .expect("Yes")
-        .end(done);
+        .expect("Yes");
     });
   });
 });
