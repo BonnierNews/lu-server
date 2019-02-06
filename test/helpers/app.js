@@ -2,7 +2,12 @@
 const express = require("express");
 const buildApp = require("../../").buildApp;
 
+const requests = [];
 const router = express.Router(); // eslint-disable-line new-cap
+router.use((req, res, next) => {
+  requests.push({path: req.path, req, res});
+  next();
+});
 router.get("/some-path", (req, res) => {
   res.status(200).send("Yes");
 });
@@ -16,4 +21,14 @@ router.get("/bork", () => {
   throw new Error("Bork!");
 });
 
-module.exports = buildApp(router);
+
+function reset() {
+  requests.length = 0;
+}
+
+module.exports = {
+  requests,
+  router,
+  reset,
+  app: buildApp(router)
+};
