@@ -21,7 +21,7 @@ Feature("Debug meta attached to requests", () => {
     Then("A correlation id should be set in debugMeta", () => {
       const {req} = requests.pop();
       req.correlationId.should.eql(correlationId);
-      req.debugMeta.meta.correlationId.should.eql(correlationId);
+      req.debugMeta.correlationId.should.eql(correlationId);
     });
   });
 
@@ -40,7 +40,7 @@ Feature("Debug meta attached to requests", () => {
     Then("A correlation id should be set in debugMeta", () => {
       const {req} = requests.pop();
       req.correlationId.should.equal("some-corr-id");
-      req.debugMeta.meta.correlationId.should.equal("some-corr-id");
+      req.debugMeta.correlationId.should.equal("some-corr-id");
     });
   });
 
@@ -59,7 +59,7 @@ Feature("Debug meta attached to requests", () => {
     Then("A correlation id should be set in debugMeta", () => {
       const {req} = requests.pop();
       req.correlationId.should.equal("some-corr-id");
-      req.debugMeta.meta.correlationId.should.equal("some-corr-id");
+      req.debugMeta.correlationId.should.equal("some-corr-id");
     });
   });
 
@@ -81,7 +81,7 @@ Feature("Debug meta attached to requests", () => {
       expect(response.headers["correlation-id"]).to.equal("corr-1");
       const {req} = requests.pop();
       req.correlationId.should.equal("corr-1");
-      req.debugMeta.meta.correlationId.should.equal("corr-1");
+      req.debugMeta.correlationId.should.equal("corr-1");
     });
 
     When("Requesting with x-correlation-id header", async () => {
@@ -96,8 +96,57 @@ Feature("Debug meta attached to requests", () => {
       expect(response.headers["correlation-id"]).to.equal("corr-2");
       const {req} = requests.pop();
       req.correlationId.should.equal("corr-2");
-      req.debugMeta.meta.correlationId.should.equal("corr-2");
+      req.debugMeta.correlationId.should.equal("corr-2");
     });
   });
 
+  Scenario("Debug meta is set", () => {
+    let response;
+    before(reset);
+    Given("the debugMiddlware is attached", () => {});
+
+    When("requesting with x-debug-meta-anything header", async () => {
+      response = await request(app)
+        .get("/some-path")
+        .set("correlation-id", "9208d5d6-1182-4a96-b86e-4209904a6648")
+        .set("x-debug-meta-anything", "something")
+        .set("z-x-debug-meta-anything2", "otherthing")
+        .expect(200);
+    });
+
+    Then("a correlation id should be set in debugMeta", () => {
+      expect(response.headers["correlation-id"]).to.equal("9208d5d6-1182-4a96-b86e-4209904a6648");
+      const {req} = requests[0];
+      req.correlationId.should.equal("9208d5d6-1182-4a96-b86e-4209904a6648");
+      req.debugMeta.correlationId.should.equal("9208d5d6-1182-4a96-b86e-4209904a6648");
+    });
+
+    And("the 'anything' should be set in 'debugMeta'", () => {
+      const {req} = requests[0];
+      req.debugMeta.should.have.property("anything", "something");
+    });
+
+    But("Nothing more than anything and correlationId", () => {
+      const {req} = requests[0];
+      Object.keys(req.debugMeta).should.have.length(2);
+      req.debugMeta.should.not.have.property("anything2");
+    });
+  });
+
+  Scenario("Debug meta is set with to camelcase version of variable", () => {
+    before(reset);
+    Given("the debugMiddlware is attached", () => {});
+
+    When("requesting with x-debug-meta-anything header", async () => {
+      await request(app)
+        .get("/some-path")
+        .set("x-debug-meta-an-epic-variable", "a-value")
+        .expect(200);
+    });
+
+    Then("the 'a-value' should be set in 'debugMeta' as 'anEpicVariable'", () => {
+      const {req} = requests[0];
+      req.debugMeta.should.have.property("anEpicVariable", "a-value");
+    });
+  });
 });

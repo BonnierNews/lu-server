@@ -16,6 +16,7 @@
     "@moebius/http-graceful-shutdown": "^1.1.0",
     "body-parser": "^1.18.2",
     "bugsnag": "^2.3.1",
+    "camelcase": "^5.0.0",
     "exp-config": "^2.0.1",
     "express": "^4.16.3",
     "lu-logger": "github:BonnierNews/lu-logger#v2.1.1",
