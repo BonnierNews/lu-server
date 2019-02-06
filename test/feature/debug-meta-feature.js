@@ -25,7 +25,7 @@ Feature("Debug meta attached to requests", () => {
     });
   });
 
-  Scenario("Correlation id is sent", () => {
+  Scenario("Correlation id is set", () => {
     before(reset);
     Given("The debugMiddlware is attached", () => {});
 
@@ -44,7 +44,7 @@ Feature("Debug meta attached to requests", () => {
     });
   });
 
-  Scenario("DebugMeta is sent", () => {
+  Scenario("DebugMeta is set", () => {
     before(reset);
     Given("The debugMiddlware is attached", () => {});
 
@@ -60,6 +60,43 @@ Feature("Debug meta attached to requests", () => {
       const {req} = requests.pop();
       req.correlationId.should.equal("some-corr-id");
       req.debugMeta.meta.correlationId.should.equal("some-corr-id");
+    });
+  });
+
+  Scenario("Multiple correlation id are set", () => {
+    let response;
+    before(reset);
+    Given("The debugMiddlware is attached", () => {});
+
+    When("Requesting with correlation-id header", async () => {
+      response = await request(app)
+        .get("/some-path")
+        .set("correlation-id", "corr-1")
+        .set("x-correlation-id", "corr-2")
+        .set("x-debug-meta-correlation-id", "corr-3")
+        .expect(200);
+    });
+
+    Then("A correlation id should be set in debugMeta", () => {
+      expect(response.headers["correlation-id"]).to.equal("corr-1");
+      const {req} = requests.pop();
+      req.correlationId.should.equal("corr-1");
+      req.debugMeta.meta.correlationId.should.equal("corr-1");
+    });
+
+    When("Requesting with x-correlation-id header", async () => {
+      response = await request(app)
+        .get("/some-path")
+        .set("x-correlation-id", "corr-2")
+        .set("x-debug-meta-correlation-id", "corr-3")
+        .expect(200);
+    });
+
+    Then("A correlation id should be set in debugMeta", () => {
+      expect(response.headers["correlation-id"]).to.equal("corr-2");
+      const {req} = requests.pop();
+      req.correlationId.should.equal("corr-2");
+      req.debugMeta.meta.correlationId.should.equal("corr-2");
     });
   });
 
