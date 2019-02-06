@@ -55,13 +55,15 @@ Feature("App mounting", () => {
         .get("/unknown")
         .expect(404)
         .expect("Content-Type", /json/);
+      const correlationId = res.headers["correlation-id"];
       res.body.should.eql({
         errors: [{
           status: "404",
           source: "/unknown",
           detail: "No resource GET /unknown",
           title: "Not Found"
-        }]
+        }],
+        meta: {correlationId}
       });
     });
   });
@@ -70,14 +72,18 @@ Feature("App mounting", () => {
 
     Given("A router with a routes that yields an error", () => {});
 
-    When("Requesting an unknown route will return 500 json", async () => {
-      const res = await request(app)
+    let response;
+    When("Requesting and internal error occures", async () => {
+      response = await request(app)
         .get("/error")
         .expect(500)
         .expect("Content-Type", /json/);
-      const correlationId = res.headers["correlation-id"];
+    });
+
+    Then("we will get a generic error message", () => {
+      const correlationId = response.headers["correlation-id"];
       expect(correlationId).to.have.length(36);
-      res.body.should.eql({
+      response.body.should.eql({
         errors: [{
           status: "500",
           title: "Server Error",
