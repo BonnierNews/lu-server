@@ -21,7 +21,6 @@ router.get("/bork", () => {
   throw new Error("Bork!");
 });
 
-
 function reset() {
   requests.length = 0;
 }

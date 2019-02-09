@@ -47,7 +47,6 @@ Feature("App mounting", () => {
   });
 
   Scenario("Not found handling", () => {
-
     Given("A router with some routes", () => {});
 
     When("Requesting an unknown route will return 404 json", async () => {
@@ -57,19 +56,20 @@ Feature("App mounting", () => {
         .expect("Content-Type", /json/);
       const correlationId = res.headers["correlation-id"];
       res.body.should.eql({
-        errors: [{
-          status: "404",
-          source: "/unknown",
-          detail: "No resource GET /unknown",
-          title: "Not Found"
-        }],
+        errors: [
+          {
+            status: "404",
+            source: "/unknown",
+            detail: "No resource GET /unknown",
+            title: "Not Found"
+          }
+        ],
         meta: {correlationId}
       });
     });
   });
 
   Scenario("Error handling", () => {
-
     Given("A router with a routes that yields an error", () => {});
 
     let response;
@@ -84,12 +84,14 @@ Feature("App mounting", () => {
       const correlationId = response.headers["correlation-id"];
       expect(correlationId).to.have.length(36);
       response.body.should.eql({
-        errors: [{
-          status: "500",
-          title: "Server Error",
-          detail: "GET /error: Error: Foo",
-          source: "/error"
-        }],
+        errors: [
+          {
+            status: "500",
+            title: "Server Error",
+            detail: "GET /error: Error: Foo",
+            source: "/error"
+          }
+        ],
         meta: {
           correlationId
         }
