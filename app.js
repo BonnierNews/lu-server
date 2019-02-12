@@ -14,7 +14,6 @@ if (config.bugsnagApiKey) {
 }
 
 function init() {
-
   const app = express();
 
   if (config.bugsnagApiKey) {
@@ -22,8 +21,8 @@ function init() {
   }
 
   app.disable("x-powered-by");
-  app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(bodyParser.text({ type: "text/*" }));
+  app.use(bodyParser.urlencoded({extended: false}));
+  app.use(bodyParser.text({type: "text/*"}));
   app.use(bodyParser.json());
 
   // Don't limit the number of outgoing HTTP requests (defaults to 4 simultaneous requests)

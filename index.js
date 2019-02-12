@@ -24,5 +24,6 @@ function buildApp(routes) {
 module.exports = {
   buildApp,
   prometheus: require("./lib/prometheus"),
-  shutdownHandler
+  shutdownHandler,
+  validator: require("./lib/validator")
 };

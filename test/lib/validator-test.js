@@ -1,0 +1,335 @@
+"use strict";
+// eslint-disable-next-line new-cap
+const joi = require("joi");
+const validator = require("../../lib/validator");
+const testMiddleware = require("../helpers/test-middleware");
+
+const bodySchema = joi.object().keys({
+  field1: joi
+    .string()
+    .min(1)
+    .required(),
+  field2: joi
+    .string()
+    .min(1)
+    .required(),
+  nested: joi
+    .object()
+    .keys({
+      field3: joi
+        .string()
+        .min(2)
+        .required()
+    })
+    .optional()
+});
+
+const paramsSchema = joi.object().keys({
+  id: joi
+    .string()
+    .min(5)
+    .required(),
+  user: joi
+    .string()
+    .uuid()
+    .required()
+});
+const middleware = validator.body(bodySchema, {allowUnknown: true});
+const queryMiddleware = validator.query(bodySchema);
+const paramsMiddleware = validator.params(paramsSchema);
+
+describe("Body validator", () => {
+  it("should pass valid body", async () => {
+    const req = {
+      body: {
+        field1: "foo",
+        field2: "bar",
+        nested: {
+          field3: "baz"
+        }
+      }
+    };
+    const response = await testMiddleware(middleware, req);
+    response.next.should.eql(true);
+  });
+
+  it("should fail on invalid field", async () => {
+    const req = {
+      body: {
+        field1: "foo"
+      }
+    };
+    const response = await testMiddleware(middleware, req);
+    response.statusCode.should.eql(400);
+    response.body.should.eql({
+      errors: [
+        {
+          title: "ValidationError in body",
+          status: "validation_error",
+          detail: '"field2" is required',
+          source: {
+            pointer: "body[field2]"
+          }
+        }
+      ]
+    });
+  });
+  it("should fail on invalid fields", async () => {
+    const req = {
+      body: {}
+    };
+    const response = await testMiddleware(middleware, req);
+    response.statusCode.should.eql(400);
+    response.body.should.eql({
+      errors: [
+        {
+          title: "ValidationError in body",
+          status: "validation_error",
+          detail: '"field1" is required',
+          source: {
+            pointer: "body[field1]"
+          }
+        },
+        {
+          title: "ValidationError in body",
+          status: "validation_error",
+          detail: '"field2" is required',
+          source: {
+            pointer: "body[field2]"
+          }
+        }
+      ]
+    });
+  });
+
+  it("should fail on nested field", async () => {
+    const req = {
+      body: {
+        field1: "foo",
+        field2: "foo",
+        nested: {
+          field3: "f"
+        }
+      }
+    };
+    const response = await testMiddleware(middleware, req);
+    response.statusCode.should.eql(400);
+    response.body.should.eql({
+      errors: [
+        {
+          title: "ValidationError in body",
+          status: "validation_error",
+          detail: '"field3" length must be at least 2 characters long',
+          source: {
+            pointer: "body[nested.field3]"
+          }
+        }
+      ]
+    });
+  });
+});
+
+describe("query validator", () => {
+  it("should pass valid query", async () => {
+    const req = {
+      query: {
+        field1: "foo",
+        field2: "bar",
+        nested: {
+          field3: "baz"
+        }
+      }
+    };
+    const response = await testMiddleware(queryMiddleware, req);
+    response.next.should.eql(true);
+  });
+
+  it("should fail on invalid field", async () => {
+    const req = {
+      query: {
+        field1: "foo"
+      }
+    };
+    const response = await testMiddleware(queryMiddleware, req);
+    response.statusCode.should.eql(400);
+    response.body.should.eql({
+      errors: [
+        {
+          title: "ValidationError in query",
+          status: "validation_error",
+          detail: '"field2" is required',
+          source: {
+            pointer: "query[field2]"
+          }
+        }
+      ]
+    });
+  });
+  it("should fail on invalid fields", async () => {
+    const req = {
+      query: {}
+    };
+    const response = await testMiddleware(queryMiddleware, req);
+    response.statusCode.should.eql(400);
+    response.body.should.eql({
+      errors: [
+        {
+          title: "ValidationError in query",
+          status: "validation_error",
+          detail: '"field1" is required',
+          source: {
+            pointer: "query[field1]"
+          }
+        },
+        {
+          title: "ValidationError in query",
+          status: "validation_error",
+          detail: '"field2" is required',
+          source: {
+            pointer: "query[field2]"
+          }
+        }
+      ]
+    });
+  });
+
+  it("should fail on nested field", async () => {
+    const req = {
+      query: {
+        field1: "foo",
+        field2: "foo",
+        nested: {
+          field3: "f"
+        }
+      }
+    };
+    const response = await testMiddleware(queryMiddleware, req);
+    response.statusCode.should.eql(400);
+    response.body.should.eql({
+      errors: [
+        {
+          title: "ValidationError in query",
+          status: "validation_error",
+          detail: '"field3" length must be at least 2 characters long',
+          source: {
+            pointer: "query[nested.field3]"
+          }
+        }
+      ]
+    });
+  });
+});
+
+describe("params validator", () => {
+  it("should pass valid params", async () => {
+    const req = {
+      params: {
+        id: "foobar",
+        user: "18e426bb-acbc-415a-8234-679ec8f0a8ec"
+      }
+    };
+    const response = await testMiddleware(paramsMiddleware, req);
+    response.next.should.eql(true);
+  });
+
+  it("should fail on invalid field", async () => {
+    const req = {
+      params: {
+        id: "foobar"
+      }
+    };
+    const response = await testMiddleware(paramsMiddleware, req);
+    response.next.should.eql(false);
+    response.statusCode.should.eql(400);
+    response.body.should.eql({
+      errors: [
+        {
+          title: "ValidationError in params",
+          status: "validation_error",
+          detail: '"user" is required',
+          source: {
+            pointer: "params[user]"
+          }
+        }
+      ]
+    });
+  });
+
+  it("should fail on invalid fields", async () => {
+    const req = {
+      params: {
+        id: "foo"
+      }
+    };
+    const response = await testMiddleware(paramsMiddleware, req);
+    response.statusCode.should.eql(400);
+    response.body.should.eql({
+      errors: [
+        {
+          title: "ValidationError in params",
+          status: "validation_error",
+          detail: '"id" length must be at least 5 characters long',
+          source: {
+            pointer: "params[id]"
+          }
+        },
+        {
+          title: "ValidationError in params",
+          status: "validation_error",
+          detail: '"user" is required',
+          source: {
+            pointer: "params[user]"
+          }
+        }
+      ]
+    });
+  });
+});
+
+describe("Multiple validations", () => {
+  it("should fail on invalid field", async () => {
+    const req = {
+      params: {
+        id: "foobar"
+      },
+      query: {
+        field1: "foobar"
+      },
+      body: {
+        field1: "foobar"
+      }
+    };
+    const combined = validator.validator({body: bodySchema, query: bodySchema, params: paramsSchema});
+    const response = await testMiddleware(combined, req);
+    response.next.should.eql(false);
+    response.statusCode.should.eql(400);
+    response.body.should.eql({
+      errors: [
+        {
+          title: "ValidationError in body",
+          status: "validation_error",
+          detail: '"field2" is required',
+          source: {
+            pointer: "body[field2]"
+          }
+        },
+        {
+          detail: '"field2" is required',
+          source: {
+            pointer: "query[field2]"
+          },
+          status: "validation_error",
+          title: "ValidationError in query"
+        },
+        {
+          detail: '"user" is required',
+          source: {
+            pointer: "params[user]"
+          },
+          status: "validation_error",
+          title: "ValidationError in params"
+        }
+      ]
+    });
+  });
+});
