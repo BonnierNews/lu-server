@@ -64,11 +64,11 @@ describe("Body validator", () => {
     response.body.should.eql({
       errors: [
         {
-          title: "ValidationError",
+          title: "ValidationError in body",
           status: "validation_error",
           detail: '"field2" is required',
           source: {
-            pointer: "field2"
+            pointer: "body[field2]"
           }
         }
       ]
@@ -83,19 +83,19 @@ describe("Body validator", () => {
     response.body.should.eql({
       errors: [
         {
-          title: "ValidationError",
+          title: "ValidationError in body",
           status: "validation_error",
           detail: '"field1" is required',
           source: {
-            pointer: "field1"
+            pointer: "body[field1]"
           }
         },
         {
-          title: "ValidationError",
+          title: "ValidationError in body",
           status: "validation_error",
           detail: '"field2" is required',
           source: {
-            pointer: "field2"
+            pointer: "body[field2]"
           }
         }
       ]
@@ -117,11 +117,11 @@ describe("Body validator", () => {
     response.body.should.eql({
       errors: [
         {
-          title: "ValidationError",
+          title: "ValidationError in body",
           status: "validation_error",
           detail: '"field3" length must be at least 2 characters long',
           source: {
-            pointer: "nested.field3"
+            pointer: "body[nested.field3]"
           }
         }
       ]
@@ -155,11 +155,11 @@ describe("query validator", () => {
     response.body.should.eql({
       errors: [
         {
-          title: "ValidationError",
+          title: "ValidationError in query",
           status: "validation_error",
           detail: '"field2" is required',
           source: {
-            pointer: "field2"
+            pointer: "query[field2]"
           }
         }
       ]
@@ -174,19 +174,19 @@ describe("query validator", () => {
     response.body.should.eql({
       errors: [
         {
-          title: "ValidationError",
+          title: "ValidationError in query",
           status: "validation_error",
           detail: '"field1" is required',
           source: {
-            pointer: "field1"
+            pointer: "query[field1]"
           }
         },
         {
-          title: "ValidationError",
+          title: "ValidationError in query",
           status: "validation_error",
           detail: '"field2" is required',
           source: {
-            pointer: "field2"
+            pointer: "query[field2]"
           }
         }
       ]
@@ -208,11 +208,11 @@ describe("query validator", () => {
     response.body.should.eql({
       errors: [
         {
-          title: "ValidationError",
+          title: "ValidationError in query",
           status: "validation_error",
           detail: '"field3" length must be at least 2 characters long',
           source: {
-            pointer: "nested.field3"
+            pointer: "query[nested.field3]"
           }
         }
       ]
@@ -244,11 +244,11 @@ describe("params validator", () => {
     response.body.should.eql({
       errors: [
         {
-          title: "ValidationError",
+          title: "ValidationError in params",
           status: "validation_error",
           detail: '"user" is required',
           source: {
-            pointer: "user"
+            pointer: "params[user]"
           }
         }
       ]
@@ -266,20 +266,68 @@ describe("params validator", () => {
     response.body.should.eql({
       errors: [
         {
-          title: "ValidationError",
+          title: "ValidationError in params",
           status: "validation_error",
           detail: '"id" length must be at least 5 characters long',
           source: {
-            pointer: "id"
+            pointer: "params[id]"
           }
         },
         {
-          title: "ValidationError",
+          title: "ValidationError in params",
           status: "validation_error",
           detail: '"user" is required',
           source: {
-            pointer: "user"
+            pointer: "params[user]"
           }
+        }
+      ]
+    });
+  });
+});
+
+describe("Multiple validations", () => {
+  it("should fail on invalid field", async () => {
+    const req = {
+      params: {
+        id: "foobar"
+      },
+      query: {
+        field1: "foobar"
+      },
+      body: {
+        field1: "foobar"
+      }
+    };
+    const combined = validator.validator({body: bodySchema, query: bodySchema, params: paramsSchema});
+    const response = await testMiddleware(combined, req);
+    response.next.should.eql(false);
+    response.statusCode.should.eql(400);
+    response.body.should.eql({
+      errors: [
+        {
+          title: "ValidationError in body",
+          status: "validation_error",
+          detail: '"field2" is required',
+          source: {
+            pointer: "body[field2]"
+          }
+        },
+        {
+          detail: '"field2" is required',
+          source: {
+            pointer: "query[field2]"
+          },
+          status: "validation_error",
+          title: "ValidationError in query"
+        },
+        {
+          detail: '"user" is required',
+          source: {
+            pointer: "params[user]"
+          },
+          status: "validation_error",
+          title: "ValidationError in params"
         }
       ]
     });

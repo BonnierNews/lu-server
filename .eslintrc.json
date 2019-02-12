@@ -7,7 +7,7 @@
     "es6": true
   },
   "extends": ["eslint:recommended"],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "json"],
   "rules": {
     "prettier/prettier": "error",
     "arrow-parens": 2,
