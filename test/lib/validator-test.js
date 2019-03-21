@@ -332,4 +332,36 @@ describe("Multiple validations", () => {
       ]
     });
   });
+
+  it("should default fields", async () => {
+    const schema = joi.object().keys({
+      field1: joi.string().default("one"),
+      field2: joi.string().default("two")
+    });
+
+    const req = {
+      params: {},
+      query: {
+        field2: "field2"
+      },
+      body: {
+        field1: "foobar"
+      }
+    };
+    const combined = validator.validator({body: schema, query: schema, params: schema});
+    const response = await testMiddleware(combined, req);
+    response.next.should.eql(true);
+    response.body.should.eql({
+      field1: "foobar",
+      field2: "two"
+    });
+    response.query.should.eql({
+      field1: "one",
+      field2: "field2"
+    });
+    response.params.should.eql({
+      field1: "one",
+      field2: "two"
+    });
+  });
 });

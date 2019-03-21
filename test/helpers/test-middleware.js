@@ -19,7 +19,7 @@ function mockResponse(callback) {
 function testMiddleware(middleware, request) {
   return new Promise((resolve) => {
     middleware(request, mockResponse(resolve), () => {
-      resolve({next: true});
+      resolve({next: true, body: request.body, query: request.query, params: request.params});
     });
   });
 }
