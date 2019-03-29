@@ -30,7 +30,7 @@
     "chai": "^4.1.2",
     "depcheck": "^0.6.9",
     "eslint": "^4.19.1",
-    "eslint-plugin-json": "^1.3.2",
+    "eslint-plugin-json": "^1.4.0",
     "eslint-plugin-prettier": "^3.0.1",
     "mocha": "^5.0.5",
     "mocha-cakes-2": "^3.2.1",

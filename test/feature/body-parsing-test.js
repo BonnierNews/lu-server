@@ -1,3 +1,5 @@
+"use strict";
+
 const request = require("supertest");
 const {app, requests, reset} = require("../helpers/app");
 const expect = require("chai").expect;
@@ -18,7 +20,7 @@ Feature("Request body sent to server", () => {
       req = requests.pop().req;
       req.body.should.eql({
         hej: "hopp"
-      })
+      });
     });
 
     And("the response should hold the rawBody", () => {
@@ -38,12 +40,11 @@ Feature("Request body sent to server", () => {
 
     Then("the response should hold the body", () => {
       req = requests.pop().req;
-      req.body.should.eql({})
+      req.body.should.eql({});
     });
 
     And("the response should hold the rawBody", () => {
-      (req.rawBody || '').should.eql('');
+      expect(req.rawBody).to.eql(undefined);
     });
   });
-
 });

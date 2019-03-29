@@ -22,12 +22,7 @@ function init() {
 
   app.disable("x-powered-by");
 
-  app.use((req, res, next) => {
-    req.on("data", (buf) => {
-      req.rawBody = (req.rawBody || '') + buf;
-    })
-    next();
-  })
+  app.use(appendRawBody);
   app.use(bodyParser.urlencoded({extended: false}));
   app.use(bodyParser.text({type: "text/*"}));
   app.use(bodyParser.json());
@@ -45,8 +40,11 @@ function init() {
 }
 
 // hack for appending the raw body
-function appendRawBody(req, res, buf) {
-  // req.rawBody = buf;
+function appendRawBody(req, res, next) {
+  req.on("data", (buf) => {
+    req.rawBody = (req.rawBody || "") + buf;
+  });
+  next();
 }
 
 module.exports = init;
