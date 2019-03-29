@@ -21,6 +21,13 @@ router.get("/bork", () => {
   throw new Error("Bork!");
 });
 
+router.post("/body", (req, res)=> {
+  res.status(200).json({
+    body: req.body,
+    rawBody: req.rawBody
+  })
+})
+
 function reset() {
   requests.length = 0;
 }
