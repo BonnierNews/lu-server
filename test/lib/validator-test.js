@@ -47,7 +47,8 @@ describe("Body validator", () => {
         nested: {
           field3: "baz"
         }
-      }
+      },
+      correlationId: "some-corr-id"
     };
     const response = await testMiddleware(middleware, req);
     response.next.should.eql(true);
@@ -57,7 +58,8 @@ describe("Body validator", () => {
     const req = {
       body: {
         field1: "foo"
-      }
+      },
+      correlationId: "some-corr-id"
     };
     const response = await testMiddleware(middleware, req);
     response.statusCode.should.eql(400);
@@ -71,12 +73,14 @@ describe("Body validator", () => {
             pointer: "body[field2]"
           }
         }
-      ]
+      ],
+      meta: {correlationId: "some-corr-id"}
     });
   });
   it("should fail on invalid fields", async () => {
     const req = {
-      body: {}
+      body: {},
+      correlationId: "some-corr-id"
     };
     const response = await testMiddleware(middleware, req);
     response.statusCode.should.eql(400);
@@ -98,7 +102,8 @@ describe("Body validator", () => {
             pointer: "body[field2]"
           }
         }
-      ]
+      ],
+      meta: {correlationId: "some-corr-id"}
     });
   });
 
@@ -110,7 +115,8 @@ describe("Body validator", () => {
         nested: {
           field3: "f"
         }
-      }
+      },
+      correlationId: "some-corr-id"
     };
     const response = await testMiddleware(middleware, req);
     response.statusCode.should.eql(400);
@@ -124,7 +130,8 @@ describe("Body validator", () => {
             pointer: "body[nested.field3]"
           }
         }
-      ]
+      ],
+      meta: {correlationId: "some-corr-id"}
     });
   });
 });
@@ -138,7 +145,8 @@ describe("query validator", () => {
         nested: {
           field3: "baz"
         }
-      }
+      },
+      correlationId: "some-corr-id"
     };
     const response = await testMiddleware(queryMiddleware, req);
     response.next.should.eql(true);
@@ -148,7 +156,8 @@ describe("query validator", () => {
     const req = {
       query: {
         field1: "foo"
-      }
+      },
+      correlationId: "some-corr-id"
     };
     const response = await testMiddleware(queryMiddleware, req);
     response.statusCode.should.eql(400);
@@ -162,12 +171,14 @@ describe("query validator", () => {
             pointer: "query[field2]"
           }
         }
-      ]
+      ],
+      meta: {correlationId: "some-corr-id"}
     });
   });
   it("should fail on invalid fields", async () => {
     const req = {
-      query: {}
+      query: {},
+      correlationId: "some-corr-id"
     };
     const response = await testMiddleware(queryMiddleware, req);
     response.statusCode.should.eql(400);
@@ -189,7 +200,8 @@ describe("query validator", () => {
             pointer: "query[field2]"
           }
         }
-      ]
+      ],
+      meta: {correlationId: "some-corr-id"}
     });
   });
 
@@ -201,7 +213,8 @@ describe("query validator", () => {
         nested: {
           field3: "f"
         }
-      }
+      },
+      correlationId: "some-corr-id"
     };
     const response = await testMiddleware(queryMiddleware, req);
     response.statusCode.should.eql(400);
@@ -215,7 +228,8 @@ describe("query validator", () => {
             pointer: "query[nested.field3]"
           }
         }
-      ]
+      ],
+      meta: {correlationId: "some-corr-id"}
     });
   });
 });
@@ -226,7 +240,8 @@ describe("params validator", () => {
       params: {
         id: "foobar",
         user: "18e426bb-acbc-415a-8234-679ec8f0a8ec"
-      }
+      },
+      correlationId: "some-corr-id"
     };
     const response = await testMiddleware(paramsMiddleware, req);
     response.next.should.eql(true);
@@ -236,7 +251,8 @@ describe("params validator", () => {
     const req = {
       params: {
         id: "foobar"
-      }
+      },
+      correlationId: "some-corr-id"
     };
     const response = await testMiddleware(paramsMiddleware, req);
     response.next.should.eql(false);
@@ -251,7 +267,8 @@ describe("params validator", () => {
             pointer: "params[user]"
           }
         }
-      ]
+      ],
+      meta: {correlationId: "some-corr-id"}
     });
   });
 
@@ -259,7 +276,8 @@ describe("params validator", () => {
     const req = {
       params: {
         id: "foo"
-      }
+      },
+      correlationId: "some-corr-id"
     };
     const response = await testMiddleware(paramsMiddleware, req);
     response.statusCode.should.eql(400);
@@ -281,7 +299,8 @@ describe("params validator", () => {
             pointer: "params[user]"
           }
         }
-      ]
+      ],
+      meta: {correlationId: "some-corr-id"}
     });
   });
 });
@@ -297,7 +316,8 @@ describe("Multiple validations", () => {
       },
       body: {
         field1: "foobar"
-      }
+      },
+      correlationId: "some-corr-id"
     };
     const combined = validator.validator({body: bodySchema, query: bodySchema, params: paramsSchema});
     const response = await testMiddleware(combined, req);
@@ -329,7 +349,8 @@ describe("Multiple validations", () => {
           status: "validation_error",
           title: "ValidationError in params"
         }
-      ]
+      ],
+      meta: {correlationId: "some-corr-id"}
     });
   });
 
@@ -346,7 +367,8 @@ describe("Multiple validations", () => {
       },
       body: {
         field1: "foobar"
-      }
+      },
+      correlationId: "some-corr-id"
     };
     const combined = validator.validator({body: schema, query: schema, params: schema});
     const response = await testMiddleware(combined, req);
