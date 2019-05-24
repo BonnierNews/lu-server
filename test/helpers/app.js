@@ -1,6 +1,7 @@
 "use strict";
 const express = require("express");
 const buildApp = require("../../").buildApp;
+const sigtermHandler = require("../../lib/handle-sigterm");
 
 const requests = [];
 const router = express.Router(); // eslint-disable-line new-cap
@@ -27,6 +28,12 @@ router.post("/body", (req, res) => {
     rawBody: req.rawBody
   });
 });
+
+router.get("/_status", (req, res) => {
+  res.status(200).send("Yes");
+});
+
+sigtermHandler.initHandleSigterm();
 
 function reset() {
   requests.length = 0;
