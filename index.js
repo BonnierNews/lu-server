@@ -25,5 +25,6 @@ module.exports = {
   buildApp,
   prometheus: require("./lib/prometheus"),
   shutdownHandler,
-  validator: require("./lib/validator")
+  validator: require("./lib/validator"),
+  assert: require("./lib/assert")
 };

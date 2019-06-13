@@ -23,4 +23,17 @@ Feature("Error handling", () => {
       expect(res.body.meta.correlationId.should.eql("foo"));
     });
   });
+
+  Scenario("Correlation id feature, correlation id sent", () => {
+    Given("A route", () => {});
+    When("Requesting with a correlation id shold return 200 Yes with the correlation id set", async () => {
+      const res = await get("/bork/assert")
+        .set("correlation-id", "foo")
+        .expect(418);
+
+      expect(res.headers["correlation-id"]).to.equal("foo");
+      expect(res.body.meta.correlationId.should.eql("foo"));
+      expect(res.body.errorMessage.should.eql("bork bork"));
+    });
+  });
 });

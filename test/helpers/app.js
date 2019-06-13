@@ -1,6 +1,6 @@
 "use strict";
 const express = require("express");
-const buildApp = require("../../").buildApp;
+const {buildApp, assert} = require("../../");
 
 const requests = [];
 const router = express.Router(); // eslint-disable-line new-cap
@@ -19,6 +19,10 @@ router.get("/timeouterror", (req, res, next) => {
 });
 router.get("/bork", () => {
   throw new Error("Bork!");
+});
+
+router.get("/bork/assert", () => {
+  assert("bork" === "cork", "bork bork", 418);
 });
 
 router.post("/body", (req, res) => {
