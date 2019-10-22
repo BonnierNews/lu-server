@@ -8,6 +8,7 @@ const middleware = require("./lib/middleware.js");
 const routes = require("./lib/routes.js");
 const config = require("exp-config");
 const bugsnag = require("bugsnag");
+const sigtermHandler = require("./lib/handle-sigterm");
 
 if (config.bugsnagApiKey) {
   bugsnag.register(config.bugsnagApiKey);
@@ -32,6 +33,9 @@ function init() {
   https.globalAgent.maxSockets = Infinity;
 
   process.env.TZ = "Europe/Stockholm";
+  if (config.luServerShutdown) {
+    sigtermHandler.initHandleSigterm();
+  }
 
   app.use(middleware);
   app.use(routes);

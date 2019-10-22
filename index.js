@@ -5,6 +5,7 @@ const bugsnag = require("bugsnag");
 const notFoundHandler = require("./lib/notFoundHandler");
 const errorHandler = require("./lib/errorHandler");
 const shutdownHandler = require("./lib/shutdownHandler");
+const sigtermHandler = require("./lib/handle-sigterm");
 
 function buildApp(routes) {
   const app = require("./app")();
@@ -25,5 +26,6 @@ module.exports = {
   buildApp,
   prometheus: require("./lib/prometheus"),
   shutdownHandler,
+  sigtermHandler,
   validator: require("./lib/validator")
 };

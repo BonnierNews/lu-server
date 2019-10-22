@@ -5,5 +5,6 @@
     "logJson": false
   },
   "requestLogging": "file",
-  "bugsnagApiKey": null
+  "bugsnagApiKey": null,
+  "luServerShutdown": true
 }
