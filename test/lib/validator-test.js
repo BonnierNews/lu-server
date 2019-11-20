@@ -1,6 +1,6 @@
 "use strict";
 // eslint-disable-next-line new-cap
-const joi = require("joi");
+const joi = require("@hapi/joi");
 const validator = require("../../lib/validator");
 const testMiddleware = require("../helpers/test-middleware");
 
@@ -125,7 +125,7 @@ describe("Body validator", () => {
         {
           title: "ValidationError in body",
           status: "validation_error",
-          detail: '"field3" length must be at least 2 characters long',
+          detail: '"nested.field3" length must be at least 2 characters long',
           source: {
             pointer: "body[nested.field3]"
           }
@@ -223,7 +223,7 @@ describe("query validator", () => {
         {
           title: "ValidationError in query",
           status: "validation_error",
-          detail: '"field3" length must be at least 2 characters long',
+          detail: '"nested.field3" length must be at least 2 characters long',
           source: {
             pointer: "query[nested.field3]"
           }
