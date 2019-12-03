@@ -15,6 +15,7 @@
     "prettier:apply": "npm run prettier -- --write"
   },
   "dependencies": {
+    "@hapi/joi": "^16.1.7",
     "@moebius/http-graceful-shutdown": "^1.1.0",
     "body-parser": "^1.18.2",
     "bugsnag": "^2.3.1",
@@ -23,12 +24,11 @@
     "express": "^4.16.3",
     "lu-logger": "github:BonnierNews/lu-logger#v2.2.0",
     "prom-client": "^10.2.2",
-    "uuid": "^3.2.1",
-    "@hapi/joi": "^16.1.7"
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "depcheck": "^0.6.9",
+    "depcheck": "^0.9.1",
     "eslint": "^4.19.1",
     "eslint-plugin-json": "^1.4.0",
     "eslint-plugin-prettier": "^3.0.1",
