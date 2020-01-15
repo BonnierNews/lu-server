@@ -12,6 +12,9 @@ function buildApp(routes) {
   if (routes) {
     app.use(routes);
   }
+
+  if (config.logClientIp) app.enable("trust proxy");
+
   app.use(notFoundHandler);
   // Bugsnag should be the first error handler
   if (config.bugsnagApiKey) {
