@@ -30,5 +30,6 @@ module.exports = {
   prometheus: require("./lib/prometheus"),
   shutdownHandler,
   sigtermHandler,
+  errorHelper: require("./lib/render-error"),
   validator: require("./lib/validator")
 };
