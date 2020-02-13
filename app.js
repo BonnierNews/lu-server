@@ -26,7 +26,7 @@ function init() {
   app.use(appendRawBody);
   app.use(bodyParser.urlencoded({extended: false}));
   app.use(bodyParser.text({type: "text/*"}));
-  app.use(bodyParser.json());
+  app.use(bodyParser.json({limit: "200kb"}));
 
   // Don't limit the number of outgoing HTTP requests (defaults to 4 simultaneous requests)
   http.globalAgent.maxSockets = Infinity;

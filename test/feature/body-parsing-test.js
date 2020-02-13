@@ -47,4 +47,39 @@ Feature("Request body sent to server", () => {
       expect(req.rawBody).to.eql(undefined);
     });
   });
+
+  Scenario("Sending an bigger body then default bodyparse limit", () => {
+    before(reset);
+    let bigBodyBuf;
+    Given("A big body", () => {
+      bigBodyBuf = Buffer.allocUnsafe(150 * 1000);
+      bigBodyBuf.fill("a");
+    });
+    let req;
+    When("Requesting the body path", async () => {
+      await request(app)
+        .post("/body")
+        .send({buf: bigBodyBuf.toString()})
+        .expect(200);
+    });
+
+    Then("the response should hold the body", () => {
+      req = requests.pop().req;
+      req.body.should.eql({buf: bigBodyBuf.toString()});
+    });
+  });
+  Scenario("Sending an bigger body then current set bodyparse limit", () => {
+    before(reset);
+    let bigBodyBuf;
+    Given("A big body", () => {
+      bigBodyBuf = Buffer.allocUnsafe(250 * 1000);
+      bigBodyBuf.fill("a");
+    });
+    When("Requesting the body path", async () => {
+      await request(app)
+        .post("/body")
+        .send({buf: bigBodyBuf.toString()})
+        .expect(500);
+    });
+  });
 });
