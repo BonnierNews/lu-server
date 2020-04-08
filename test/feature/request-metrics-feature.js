@@ -208,6 +208,39 @@ Feature("Incoming request metrics", () => {
   );
 
   Scenario(
+    "successfull request (with bad userId number) with enableReqMetricNamespaceLabel true should generate metric with bnNamespace label",
+    () => {
+      before(() => {
+        process.env.ALLOW_TEST_ENV_OVERRIDE = true;
+        config.enableReqMetricNamespaceLabel = true;
+      });
+      after(() => {
+        config.enableReqMetricNamespaceLabel = false;
+        process.env.ALLOW_TEST_ENV_OVERRIDE = false;
+      });
+      let metricsRes;
+      Given("a request is made to an epic endpoint with userId", async () => {
+        await post("/epic-endpoint", {userId: 123456});
+      });
+      When("requesting the /metrics endpoint", async () => {
+        metricsRes = await get("/metrics");
+      });
+      Then("the incoming request total counter should be incremented", () => {
+        const totalCounter = getCounterMetric(metricsRes, "lu_http_incoming_requests_total");
+        totalCounter.count.should.eql("1");
+        totalCounter.labels.should.include("appName");
+        totalCounter.labels.should.include('bnNamespace="omitted"');
+      });
+      And("the incoming request duration counter should be incremented", () => {
+        const durationCounter = getCounterMetric(metricsRes, "lu_http_incoming_request_duration_seconds");
+        durationCounter.count.should.eql("1");
+        durationCounter.labels.should.include("appName");
+        durationCounter.labels.should.include('bnNamespace="omitted"');
+      });
+    }
+  );
+
+  Scenario(
     "successfull request (with namespace) with enableReqMetricNamespaceLabel true should generate metric with bnNamespace label",
     () => {
       before(() => {
