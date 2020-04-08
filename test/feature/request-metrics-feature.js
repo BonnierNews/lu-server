@@ -196,15 +196,13 @@ Feature("Incoming request metrics", () => {
         const totalCounter = getCounterMetric(metricsRes, "lu_http_incoming_requests_total");
         totalCounter.count.should.eql("1");
         totalCounter.labels.should.include("appName");
-        totalCounter.labels.should.include("bnNamespace");
-        totalCounter.labels.should.include("omitted");
+        totalCounter.labels.should.include('bnNamespace="omitted"');
       });
       And("the incoming request duration counter should be incremented", () => {
         const durationCounter = getCounterMetric(metricsRes, "lu_http_incoming_request_duration_seconds");
         durationCounter.count.should.eql("1");
         durationCounter.labels.should.include("appName");
-        durationCounter.labels.should.include("bnNamespace");
-        durationCounter.labels.should.include("omitted");
+        durationCounter.labels.should.include('bnNamespace="omitted"');
       });
     }
   );
