@@ -4,17 +4,12 @@ const {app} = require("./app");
 const pathLib = require("path");
 
 function get(path) {
-  return supertest(app)
-    .get(path)
-    .set("correlation-id", caller());
+  return supertest(app).get(path).set("correlation-id", caller());
 }
 
 function post(path, body) {
   const callingFunction = caller();
-  return supertest(app)
-    .post(path)
-    .set("correlation-id", callingFunction)
-    .send(body);
+  return supertest(app).post(path).set("correlation-id", callingFunction).send(body);
 }
 
 /**
@@ -27,7 +22,7 @@ function caller(depth) {
   let stack, file, frame;
 
   const pst = Error.prepareStackTrace;
-  Error.prepareStackTrace = function(_, innerStack) {
+  Error.prepareStackTrace = function (_, innerStack) {
     Error.prepareStackTrace = pst;
     return innerStack;
   };

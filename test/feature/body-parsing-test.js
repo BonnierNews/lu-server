@@ -10,10 +10,7 @@ Feature("Request body sent to server", () => {
 
     let req;
     When("Requesting the body path", async () => {
-      await request(app)
-        .post("/body")
-        .send({hej: "hopp"})
-        .expect(200);
+      await request(app).post("/body").send({hej: "hopp"}).expect(200);
     });
 
     Then("the response should hold the body", () => {
@@ -33,9 +30,7 @@ Feature("Request body sent to server", () => {
 
     let req;
     When("Requesting the body path", async () => {
-      await request(app)
-        .post("/body")
-        .expect(200);
+      await request(app).post("/body").expect(200);
     });
 
     Then("the response should hold the body", () => {
@@ -57,10 +52,7 @@ Feature("Request body sent to server", () => {
     });
     let req;
     When("Requesting the body path", async () => {
-      await request(app)
-        .post("/body")
-        .send({buf: bigBodyBuf.toString()})
-        .expect(200);
+      await request(app).post("/body").send({buf: bigBodyBuf.toString()}).expect(200);
     });
 
     Then("the response should hold the body", () => {
@@ -76,10 +68,7 @@ Feature("Request body sent to server", () => {
       bigBodyBuf.fill("a");
     });
     When("Requesting the body path", async () => {
-      await request(app)
-        .post("/body")
-        .send({buf: bigBodyBuf.toString()})
-        .expect(500);
+      await request(app).post("/body").send({buf: bigBodyBuf.toString()}).expect(500);
     });
   });
 });

@@ -5,34 +5,19 @@ const validator = require("../../lib/validator");
 const testMiddleware = require("../helpers/test-middleware");
 
 const bodySchema = joi.object().keys({
-  field1: joi
-    .string()
-    .min(1)
-    .required(),
-  field2: joi
-    .string()
-    .min(1)
-    .required(),
+  field1: joi.string().min(1).required(),
+  field2: joi.string().min(1).required(),
   nested: joi
     .object()
     .keys({
-      field3: joi
-        .string()
-        .min(2)
-        .required()
+      field3: joi.string().min(2).required()
     })
     .optional()
 });
 
 const paramsSchema = joi.object().keys({
-  id: joi
-    .string()
-    .min(5)
-    .required(),
-  user: joi
-    .string()
-    .uuid()
-    .required()
+  id: joi.string().min(5).required(),
+  user: joi.string().uuid().required()
 });
 const middleware = validator.body(bodySchema, {allowUnknown: true});
 const queryMiddleware = validator.query(bodySchema);
