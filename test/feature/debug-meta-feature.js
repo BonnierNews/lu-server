@@ -11,9 +11,7 @@ Feature("Debug meta attached to requests", () => {
 
     let correlationId;
     When("Requesting without correlation id", async () => {
-      const response = await request(app)
-        .get("/some-path")
-        .expect(200);
+      const response = await request(app).get("/some-path").expect(200);
       expect(response.headers["correlation-id"]).to.have.length(36);
       correlationId = response.headers["correlation-id"];
     });
@@ -30,10 +28,7 @@ Feature("Debug meta attached to requests", () => {
     Given("The debugMiddlware is attached", () => {});
 
     When("Requesting with correlation id", async () => {
-      const response = await request(app)
-        .get("/some-path")
-        .set("correlation-id", "some-corr-id")
-        .expect(200);
+      const response = await request(app).get("/some-path").set("correlation-id", "some-corr-id").expect(200);
       expect(response.headers["correlation-id"]).to.equal("some-corr-id");
     });
 
@@ -138,10 +133,7 @@ Feature("Debug meta attached to requests", () => {
     Given("the debugMiddlware is attached", () => {});
 
     When("requesting with x-debug-meta-anything header", async () => {
-      await request(app)
-        .get("/some-path")
-        .set("x-debug-meta-an-epic-variable", "a-value")
-        .expect(200);
+      await request(app).get("/some-path").set("x-debug-meta-an-epic-variable", "a-value").expect(200);
     });
 
     Then("the 'a-value' should be set in 'debugMeta' as 'anEpicVariable'", () => {

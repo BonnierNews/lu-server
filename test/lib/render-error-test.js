@@ -26,15 +26,15 @@ describe("Mapping a Render404", () => {
     let correlationId;
 
     const res = {
-      status: function(status) {
+      status: function (status) {
         statusCode = status;
         return this;
       },
-      json: function(data) {
+      json: function (data) {
         json = data;
         return this;
       },
-      get: function() {
+      get: function () {
         return (correlationId = "364b5357-0000-4e47-bc85-7464eae8ec26");
       }
     };
@@ -68,16 +68,16 @@ describe("Mapping a renderError with body", () => {
     let correlationId;
     const body = {type: "cancel-order", id: "98fdc6a2-b701-494b-b804-51995ac4209f"};
     const res = {
-      status: function(status) {
+      status: function (status) {
         statusCode = status;
         return this;
       },
       body,
-      json: function(data) {
+      json: function (data) {
         json = data;
         return this;
       },
-      get: function() {
+      get: function () {
         return (correlationId = "364b5357-0000-4e47-bc85-7464eae8ec26");
       }
     };
