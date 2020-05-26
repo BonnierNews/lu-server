@@ -1678,13 +1678,13 @@ logform@^2.1.1:
     ms "^2.1.1"
     triple-beam "^1.3.0"
 
-"lu-logger@github:BonnierNews/lu-logger#v2.2.0":
+"lu-logger@github:BonnierNews/lu-logger":
   version "2.2.0"
-  resolved "https://codeload.github.com/BonnierNews/lu-logger/tar.gz/7c041e84f1055dfd6fcc506a653b747ed15817bf"
+  resolved "https://codeload.github.com/BonnierNews/lu-logger/tar.gz/6220f03f174d747e98c534599759a43ec65c2768"
   dependencies:
     exp-config "^2.0.1"
     lodash.isequal "^4.5.0"
-    prom-client "^10.2.2"
+    prom-client "^12.0.0"
     winston "^3.1.0"
     winston-syslog "github:BonnierNews/winston-syslog#6c6f7d60e4"
     winston-transport "^3.2.1"
@@ -2045,13 +2045,6 @@ progress@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
-
-prom-client@^10.2.2:
-  version "10.2.3"
-  resolved "https://registry.yarnpkg.com/prom-client/-/prom-client-10.2.3.tgz#a51bf21c239c954a6c5be4b1361fdd380218bb41"
-  integrity sha512-Xboq5+TdUwuQtSSDRZRNnb5NprINlgQN999VqUjZxnLKydUNLeIPx6Eiahg6oJua3XBg2TGnh5Cth1s4I6+r7g==
-  dependencies:
-    tdigest "^0.1.1"
 
 prom-client@^12.0.0:
   version "12.0.0"
