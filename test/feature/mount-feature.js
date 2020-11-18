@@ -47,7 +47,7 @@ Feature("App mounting", () => {
             title: "Not Found"
           }
         ],
-        meta: {correlationId}
+        meta: {correlationId, clientIp: res.body.meta.clientIp}
       });
     });
   });
@@ -72,9 +72,7 @@ Feature("App mounting", () => {
             source: "/error"
           }
         ],
-        meta: {
-          correlationId
-        }
+        meta: {correlationId, clientIp: response.body.meta.clientIp}
       });
     });
   });

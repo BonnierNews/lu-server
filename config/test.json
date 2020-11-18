@@ -7,5 +7,6 @@
   },
   "requestLogging": "file",
   "bugsnagApiKey": null,
-  "luServerShutdown": true
+  "luServerShutdown": true,
+  "logClientIp": true
 }

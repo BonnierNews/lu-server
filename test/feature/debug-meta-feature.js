@@ -121,9 +121,14 @@ Feature("Debug meta attached to requests", () => {
       req.debugMeta.should.have.property("anything", "something");
     });
 
-    But("Nothing more than anything and correlationId", () => {
+    And("the 'clientIp' should be set in 'debugMeta'", () => {
       const {req} = requests[0];
-      Object.keys(req.debugMeta).should.have.length(2);
+      req.debugMeta.should.have.property("clientIp");
+    });
+
+    But("Nothing more than anything, correlationId and clientIp", () => {
+      const {req} = requests[0];
+      Object.keys(req.debugMeta).should.have.length(4);
       req.debugMeta.should.not.have.property("anything2");
     });
   });
@@ -139,6 +144,21 @@ Feature("Debug meta attached to requests", () => {
     Then("the 'a-value' should be set in 'debugMeta' as 'anEpicVariable'", () => {
       const {req} = requests[0];
       req.debugMeta.should.have.property("anEpicVariable", "a-value");
+    });
+  });
+
+  Scenario("clientIp and trueClientIp should be set in debugMeta", () => {
+    before(reset);
+    Given("the debugMiddlware is attached", () => {});
+
+    When("requesting with True-Client-IP header", async () => {
+      await request(app).get("/some-path").set("True-Client-IP", "0.1.2.3").expect(200);
+    });
+
+    Then("the clientIp and trueClientIp should be set in 'debugMeta'", () => {
+      const {req} = requests[0];
+      req.debugMeta.should.have.property("clientIp");
+      req.debugMeta.should.have.property("trueClientIp", "0.1.2.3");
     });
   });
 });
