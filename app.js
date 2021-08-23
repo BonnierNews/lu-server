@@ -7,19 +7,10 @@ const bodyParser = require("body-parser");
 const middleware = require("./lib/middleware.js");
 const routes = require("./lib/routes.js");
 const config = require("exp-config");
-const bugsnag = require("bugsnag");
 const sigtermHandler = require("./lib/handle-sigterm");
-
-if (config.bugsnagApiKey) {
-  bugsnag.register(config.bugsnagApiKey);
-}
 
 function init() {
   const app = express();
-
-  if (config.bugsnagApiKey) {
-    app.use(bugsnag.requestHandler);
-  }
 
   app.disable("x-powered-by");
 

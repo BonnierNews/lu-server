@@ -6,7 +6,6 @@
     "truncateLog": true
   },
   "requestLogging": "file",
-  "bugsnagApiKey": null,
   "luServerShutdown": true,
   "logClientIp": true
 }
