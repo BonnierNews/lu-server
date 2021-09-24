@@ -1,6 +1,6 @@
 "use strict";
-// eslint-disable-next-line new-cap
-const joi = require("@hapi/joi");
+
+const joi = require("joi");
 const validator = require("../../lib/validator");
 const testMiddleware = require("../helpers/test-middleware");
 
