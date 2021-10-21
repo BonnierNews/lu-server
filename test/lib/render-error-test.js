@@ -1,6 +1,6 @@
 "use strict";
 
-const {render404, renderError} = require("../../lib/render-error");
+const {render404, render409, renderError} = require("../../lib/render-error");
 const assert = require("assert");
 
 const expectedResultRender404 = {
@@ -42,6 +42,50 @@ describe("Mapping a Render404", () => {
     assert.deepEqual(statusCode, 404);
     assert.deepEqual(correlationId, expectedResultRender404.meta.correlationId);
     json.should.eql(expectedResultRender404);
+  });
+});
+
+const expectedResultRender409 = {
+  errors: [
+    {
+      detail: "Detail about the conflict error",
+      source: {
+        pointer: "meta[correlationId]"
+      },
+      status: "conflict",
+      title: "Conflict"
+    }
+  ],
+  type: "some-type",
+  id: "some-id",
+  meta: {
+    correlationId: "364b5357-0000-4e47-bc85-7464eae8ec26"
+  }
+};
+
+describe("Mapping a Render409", () => {
+  it("Should map the render409", () => {
+    let json;
+    let statusCode;
+    let correlationId;
+
+    const res = {
+      status: function (status) {
+        statusCode = status;
+        return this;
+      },
+      json: function (data) {
+        json = data;
+        return this;
+      },
+      get: function () {
+        return (correlationId = "364b5357-0000-4e47-bc85-7464eae8ec26");
+      }
+    };
+    render409(res, {type: "some-type", id: "some-id"}, "meta[correlationId]", "Detail about the conflict error");
+    assert.deepEqual(statusCode, 409);
+    assert.deepEqual(correlationId, expectedResultRender409.meta.correlationId);
+    json.should.eql(expectedResultRender409);
   });
 });
 

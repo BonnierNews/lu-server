@@ -1,6 +1,6 @@
 {
   "name": "lu-server",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Base server for lu services",
   "main": "index.js",
   "repository": "https://github.com/bonniernews/lu-server",
