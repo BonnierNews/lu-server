@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "https://github.com/bonniernews/lu-server",
   "author": "LU Infra Team",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "mocha": "mocha",
     "lint": "eslint .",
