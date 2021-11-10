@@ -1,12 +1,14 @@
 {
   "name": "lu-server",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=12 <=16"
   },
   "description": "Base server for lu services",
   "main": "index.js",
-  "repository": "https://github.com/bonniernews/lu-server",
+  "repository": "github:BonnierNews/lu-server",
+  "homepage": "https://github.com/BonnierNews/lu-server",
+  "bugs": "https://github.com/BonnierNews/lu-server/issues",
   "author": "LU Infra Team",
   "license": "MIT",
   "scripts": {
