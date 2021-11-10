@@ -1,4 +1,5 @@
-## LU Server
+# LU Server
+![Node.js CI](https://github.com/BonnierNews/lu-server/actions/workflows/nodejs.yml/badge.svg)
 
 The base server for lu apps
 
