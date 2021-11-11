@@ -1,4 +1,5 @@
-## LU Server
+# LU Server
+![Node.js CI](https://github.com/BonnierNews/lu-server/actions/workflows/nodejs.yml/badge.svg)
 
 The base server for lu apps
 
@@ -26,4 +27,6 @@ process.on("SIGTERM", async () => {
 });
 ```
 
-## validator middleware
+## Version notes:
+v1.x supports node 8,10 (but works at least to node 14)
+v2.x supports node 12,14,16
