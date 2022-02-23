@@ -8,6 +8,11 @@
   "port": 3000,
   "viewCaching": false,
   "HOSTNAME": "development-pod",
+  "express": {
+    "body": {
+      "limit": "200kb"
+    }
+  },
   "postgres": {
     "user": "crm",
     "password": "crm",
