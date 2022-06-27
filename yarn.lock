@@ -1471,9 +1471,9 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-"lu-logger@BonnierNews/lu-logger#semver:~3.0.0":
-  version "3.0.2"
-  resolved "https://codeload.github.com/BonnierNews/lu-logger/tar.gz/b480ffe84ddbf1a6861719094a64c1bfbc48bf62"
+"lu-logger@BonnierNews/lu-logger#semver:~3.0.3":
+  version "3.0.3"
+  resolved "https://codeload.github.com/BonnierNews/lu-logger/tar.gz/5f9d718426e4abc48b9b473821970a004960a309"
   dependencies:
     exp-config "^3.0.0"
     lodash.isequal "^4.5.0"
