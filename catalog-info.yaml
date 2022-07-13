@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: lu-server
+  description: The base server for lu-apps
+  annotations:
+    github.com/project-slug: BonnierNews/lu-server
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  lifecycle: production
+  owner: bn-developer-data-infra
+  dependsOn:
+    - resource:default/lu-logger
