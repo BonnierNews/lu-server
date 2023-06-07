@@ -1916,9 +1916,9 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-"lu-logger@github:BonnierNews/lu-logger#feature/better-log-masking":
+"lu-logger@BonnierNews/lu-logger#semver:~5.0.1":
   version "5.0.1"
-  resolved "https://codeload.github.com/BonnierNews/lu-logger/tar.gz/1353fb3992954f3865ebd9ce2d7e5207720783e7"
+  resolved "https://codeload.github.com/BonnierNews/lu-logger/tar.gz/df087dc213ef08691ce47c674a3da908d99f79b8"
   dependencies:
     exp-config "^4.2.0"
     lodash.isequal "^4.5.0"
