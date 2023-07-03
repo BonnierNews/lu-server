@@ -2,7 +2,8 @@
   "name": "lu-server",
   "version": "4.0.2",
   "engines": {
-    "node": ">=16 <=18"
+    "node": ">=16 <=18",
+    "yarn": "please use npm"
   },
   "description": "Base server for lu services",
   "main": "index.js",
@@ -18,7 +19,7 @@
     "format": "prettier **/*.js --write && eslint . --fix",
     "prettier": "prettier \"**/*.{js,json,md}\"",
     "prettier:apply": "npm run prettier -- --write",
-    "coverage": "nyc yarn test",
+    "coverage": "nyc npm test",
     "check-coverage": "nyc check-coverage"
   },
   "dependencies": {
