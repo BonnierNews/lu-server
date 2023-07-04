@@ -11,7 +11,7 @@
     "lib/metrics-gcp.js",
     "lib/metrics.js",
     "lib/metricsHelper.js",
-    "prometheus.js",
+    "lib/prometheus.js",
     "test/*"
   ]
 }
