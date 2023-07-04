@@ -1,8 +1,9 @@
 {
   "name": "lu-server",
-  "version": "4.0.2",
+  "version": "4.1.0",
   "engines": {
-    "node": ">=16 <=18"
+    "node": ">=16 <=18",
+    "yarn": "please use npm"
   },
   "description": "Base server for lu services",
   "main": "index.js",
@@ -18,7 +19,7 @@
     "format": "prettier **/*.js --write && eslint . --fix",
     "prettier": "prettier \"**/*.{js,json,md}\"",
     "prettier:apply": "npm run prettier -- --write",
-    "coverage": "nyc yarn test",
+    "coverage": "nyc npm test",
     "check-coverage": "nyc check-coverage"
   },
   "dependencies": {
@@ -29,7 +30,7 @@
     "exp-config": "^4.2.0",
     "express": "^4.18.2",
     "joi": "^17.7.0",
-    "lu-logger": "BonnierNews/lu-logger#semver:~6.0.3",
+    "lu-logger": "BonnierNews/lu-logger#semver:~6.1.0",
     "prom-client": "^12.0.0",
     "uuid": "^9.0.0"
   },
