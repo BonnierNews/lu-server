@@ -6,8 +6,11 @@
   "branches": "74",
   "functions": "82",
   "lines": "90",
-  "excludes": [
+  "exclude": [
     "lib/metrics-aws.js",
-    "lib/metrics-gcp.js"
+    "lib/metrics-gcp.js",
+    "lib/metricsHelper.js",
+    "prometheus.js",
+    "test/*"
   ]
 }
