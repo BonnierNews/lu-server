@@ -1,6 +1,6 @@
 {
   "name": "lu-server",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "engines": {
     "node": ">=16 <=18",
     "yarn": "please use npm"
