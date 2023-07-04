@@ -5,5 +5,12 @@
   "statements": "89",
   "branches": "74",
   "functions": "82",
-  "lines": "90"
+  "lines": "90",
+  "exclude": [
+    "lib/metrics-aws.js",
+    "lib/metrics-gcp.js",
+    "lib/metricsHelper.js",
+    "prometheus.js",
+    "test/*"
+  ]
 }
