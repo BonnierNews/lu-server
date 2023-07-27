@@ -6,7 +6,7 @@ const sigtermHandler = require("../../lib/handle-sigterm");
 const requests = [];
 const router = express.Router(); // eslint-disable-line new-cap
 router.use((req, res, next) => {
-  requests.push({path: req.path, req, res});
+  requests.push({ path: req.path, req, res });
   next();
 });
 router.get("/some-path", (req, res) => {
@@ -25,7 +25,7 @@ router.get("/bork", () => {
 router.post("/body", (req, res) => {
   res.status(200).json({
     body: req.body,
-    rawBody: req.rawBody
+    rawBody: req.rawBody,
   });
 });
 
@@ -43,5 +43,5 @@ module.exports = {
   requests,
   router,
   reset,
-  app: buildApp(router)
+  app: buildApp(router),
 };

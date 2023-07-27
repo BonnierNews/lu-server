@@ -1,7 +1,7 @@
 "use strict";
 
 const request = require("supertest");
-const {app, requests, reset} = require("../helpers/app");
+const { app, requests, reset } = require("../helpers/app");
 const expect = require("chai").expect;
 
 Feature("Debug meta attached to requests", () => {
@@ -17,7 +17,7 @@ Feature("Debug meta attached to requests", () => {
     });
 
     Then("A correlation id should be set in debugMeta", () => {
-      const {req} = requests.pop();
+      const { req } = requests.pop();
       req.correlationId.should.eql(correlationId);
       req.debugMeta.correlationId.should.eql(correlationId);
     });
@@ -33,7 +33,7 @@ Feature("Debug meta attached to requests", () => {
     });
 
     Then("A correlation id should be set in debugMeta", () => {
-      const {req} = requests.pop();
+      const { req } = requests.pop();
       req.correlationId.should.equal("some-corr-id");
       req.debugMeta.correlationId.should.equal("some-corr-id");
     });
@@ -52,7 +52,7 @@ Feature("Debug meta attached to requests", () => {
     });
 
     Then("A correlation id should be set in debugMeta", () => {
-      const {req} = requests.pop();
+      const { req } = requests.pop();
       req.correlationId.should.equal("some-corr-id");
       req.debugMeta.correlationId.should.equal("some-corr-id");
     });
@@ -74,7 +74,7 @@ Feature("Debug meta attached to requests", () => {
 
     Then("A correlation id should be set in debugMeta", () => {
       expect(response.headers["correlation-id"]).to.equal("corr-1");
-      const {req} = requests.pop();
+      const { req } = requests.pop();
       req.correlationId.should.equal("corr-1");
       req.debugMeta.correlationId.should.equal("corr-1");
     });
@@ -89,7 +89,7 @@ Feature("Debug meta attached to requests", () => {
 
     Then("A correlation id should be set in debugMeta", () => {
       expect(response.headers["correlation-id"]).to.equal("corr-2");
-      const {req} = requests.pop();
+      const { req } = requests.pop();
       req.correlationId.should.equal("corr-2");
       req.debugMeta.correlationId.should.equal("corr-2");
     });
@@ -111,23 +111,23 @@ Feature("Debug meta attached to requests", () => {
 
     Then("a correlation id should be set in debugMeta", () => {
       expect(response.headers["correlation-id"]).to.equal("9208d5d6-1182-4a96-b86e-4209904a6648");
-      const {req} = requests[0];
+      const { req } = requests[0];
       req.correlationId.should.equal("9208d5d6-1182-4a96-b86e-4209904a6648");
       req.debugMeta.correlationId.should.equal("9208d5d6-1182-4a96-b86e-4209904a6648");
     });
 
     And("the 'anything' should be set in 'debugMeta'", () => {
-      const {req} = requests[0];
+      const { req } = requests[0];
       req.debugMeta.should.have.property("anything", "something");
     });
 
     And("the 'clientIp' should be set in 'debugMeta'", () => {
-      const {req} = requests[0];
+      const { req } = requests[0];
       req.debugMeta.should.have.property("clientIp");
     });
 
     But("Nothing more than anything, correlationId and clientIp", () => {
-      const {req} = requests[0];
+      const { req } = requests[0];
       Object.keys(req.debugMeta).should.have.length(4);
       req.debugMeta.should.not.have.property("anything2");
     });
@@ -142,7 +142,7 @@ Feature("Debug meta attached to requests", () => {
     });
 
     Then("the 'a-value' should be set in 'debugMeta' as 'anEpicVariable'", () => {
-      const {req} = requests[0];
+      const { req } = requests[0];
       req.debugMeta.should.have.property("anEpicVariable", "a-value");
     });
   });
@@ -156,7 +156,7 @@ Feature("Debug meta attached to requests", () => {
     });
 
     Then("the clientIp and trueClientIp should be set in 'debugMeta'", () => {
-      const {req} = requests[0];
+      const { req } = requests[0];
       req.debugMeta.should.have.property("clientIp");
       req.debugMeta.should.have.property("trueClientIp", "0.1.2.3");
     });

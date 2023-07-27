@@ -1,22 +1,18 @@
 "use strict";
 
-const {render404, render409, renderError} = require("../../lib/render-error");
+const { render404, render409, renderError } = require("../../lib/render-error");
 const assert = require("assert");
 
 const expectedResultRender404 = {
   errors: [
     {
       detail: "Detail about the not found error",
-      source: {
-        pointer: "meta[correlationId]"
-      },
+      source: { pointer: "meta[correlationId]" },
       status: "not_found",
-      title: "Not found"
-    }
+      title: "Not found",
+    },
   ],
-  meta: {
-    correlationId: "364b5357-0000-4e47-bc85-7464eae8ec26"
-  }
+  meta: { correlationId: "364b5357-0000-4e47-bc85-7464eae8ec26" },
 };
 
 describe("Mapping a Render404", () => {
@@ -36,7 +32,7 @@ describe("Mapping a Render404", () => {
       },
       get: function () {
         return (correlationId = "364b5357-0000-4e47-bc85-7464eae8ec26");
-      }
+      },
     };
     render404(res, "Detail about the not found error", "meta[correlationId]");
     assert.deepEqual(statusCode, 404);
@@ -49,18 +45,14 @@ const expectedResultRender409 = {
   errors: [
     {
       detail: "Detail about the conflict error",
-      source: {
-        pointer: "meta[correlationId]"
-      },
+      source: { pointer: "meta[correlationId]" },
       status: "conflict",
-      title: "Conflict"
-    }
+      title: "Conflict",
+    },
   ],
   type: "some-type",
   id: "some-id",
-  meta: {
-    correlationId: "364b5357-0000-4e47-bc85-7464eae8ec26"
-  }
+  meta: { correlationId: "364b5357-0000-4e47-bc85-7464eae8ec26" },
 };
 
 describe("Mapping a Render409", () => {
@@ -80,9 +72,9 @@ describe("Mapping a Render409", () => {
       },
       get: function () {
         return (correlationId = "364b5357-0000-4e47-bc85-7464eae8ec26");
-      }
+      },
     };
-    render409(res, {type: "some-type", id: "some-id"}, "meta[correlationId]", "Detail about the conflict error");
+    render409(res, { type: "some-type", id: "some-id" }, "meta[correlationId]", "Detail about the conflict error");
     assert.deepEqual(statusCode, 409);
     assert.deepEqual(correlationId, expectedResultRender409.meta.correlationId);
     json.should.eql(expectedResultRender409);
@@ -93,16 +85,12 @@ const expectedResultRenderError = {
   errors: [
     {
       detail: "Details about a server error",
-      source: {
-        pointer: "meta[correlationId]"
-      },
+      source: { pointer: "meta[correlationId]" },
       status: "server_error",
-      title: "Server error"
-    }
+      title: "Server error",
+    },
   ],
-  meta: {
-    correlationId: "364b5357-0000-4e47-bc85-7464eae8ec26"
-  }
+  meta: { correlationId: "364b5357-0000-4e47-bc85-7464eae8ec26" },
 };
 
 describe("Mapping a renderError with body", () => {
@@ -110,7 +98,7 @@ describe("Mapping a renderError with body", () => {
     let json;
     let statusCode;
     let correlationId;
-    const body = {type: "cancel-order", id: "98fdc6a2-b701-494b-b804-51995ac4209f"};
+    const body = { type: "cancel-order", id: "98fdc6a2-b701-494b-b804-51995ac4209f" };
     const res = {
       status: function (status) {
         statusCode = status;
@@ -123,15 +111,13 @@ describe("Mapping a renderError with body", () => {
       },
       get: function () {
         return (correlationId = "364b5357-0000-4e47-bc85-7464eae8ec26");
-      }
+      },
     };
     renderError(res, 500, {
       detail: "Details about a server error",
-      source: {
-        pointer: "meta[correlationId]"
-      },
+      source: { pointer: "meta[correlationId]" },
       status: "server_error",
-      title: "Server error"
+      title: "Server error",
     });
     assert.deepEqual(statusCode, 500);
     assert.deepEqual(correlationId, expectedResultRenderError.meta.correlationId);

@@ -19,10 +19,10 @@ const terminateServer = shutdownHandler(server);
 process.on("SIGTERM", async () => {
   try {
     await terminateServer();
-    process.exit(0); // eslint-disable-line no-process-exit
+    process.exit(0); // eslint-disable-line n/no-process-exit
   } catch (error) {
     logger.error(error);
-    process.exit(1); // eslint-disable-line no-process-exit
+    process.exit(1); // eslint-disable-line n/no-process-exit
   }
 });
 ```

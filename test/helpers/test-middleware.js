@@ -1,7 +1,7 @@
 "use strict";
 
 function mockResponse(callback) {
-  const expected = {next: false};
+  const expected = { next: false };
   const res = {
     status: (code) => {
       expected.statusCode = code;
@@ -10,7 +10,7 @@ function mockResponse(callback) {
     json: (body) => {
       expected.body = body;
       return callback(expected);
-    }
+    },
   };
 
   return res;
@@ -19,7 +19,7 @@ function mockResponse(callback) {
 function testMiddleware(middleware, request) {
   return new Promise((resolve) => {
     middleware(request, mockResponse(resolve), () => {
-      resolve({next: true, body: request.body, query: request.query, params: request.params});
+      resolve({ next: true, body: request.body, query: request.query, params: request.params });
     });
   });
 }

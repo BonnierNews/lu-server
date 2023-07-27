@@ -26,5 +26,5 @@ module.exports = {
   shutdownHandler,
   sigtermHandler,
   errorHelper: require("./lib/render-error"),
-  validator: require("./lib/validator")
+  validator: require("./lib/validator"),
 };

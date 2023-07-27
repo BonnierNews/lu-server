@@ -1,6 +1,6 @@
 "use strict";
 const supertest = require("supertest");
-const {app} = require("./app");
+const { app } = require("./app");
 const pathLib = require("path");
 
 function get(path) {
@@ -28,7 +28,11 @@ function caller(depth) {
   };
 
   stack = new Error().stack;
-  depth = !depth || isNaN(depth) ? 1 : depth > stack.length - 2 ? stack.length - 2 : depth;
+  if (!depth || isNaN(depth)) {
+    depth = 1;
+  } else {
+    depth = depth > stack.length - 2 ? stack.length - 2 : depth;
+  }
   stack = stack.slice(depth + 1);
 
   do {
@@ -43,5 +47,5 @@ function caller(depth) {
 
 module.exports = {
   get,
-  post
+  post,
 };
