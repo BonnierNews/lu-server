@@ -1,7 +1,7 @@
 "use strict";
 
 const expect = require("chai").expect;
-const {get} = require("../helpers/request-helper");
+const { get } = require("../helpers/request-helper");
 
 Feature("Error handling", () => {
   Scenario("Correlation id feature, no correlation id sent", () => {

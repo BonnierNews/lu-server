@@ -1,6 +1,6 @@
 {
   "name": "lu-server",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "engines": {
     "node": ">=16 <=18",
     "yarn": "please use npm"
@@ -19,8 +19,8 @@
     "format": "prettier **/*.js --write && eslint . --fix",
     "prettier": "prettier \"**/*.{js,json,md}\"",
     "prettier:apply": "npm run prettier -- --write",
-    "coverage": "nyc npm test",
-    "check-coverage": "nyc check-coverage"
+    "coverage": "c8 npm test",
+    "check-coverage": "c8 check-coverage"
   },
   "dependencies": {
     "@bonniernews/gcp-push-metrics": "^3.1.0",
@@ -35,14 +35,14 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "c8": "^8.0.1",
     "chai": "^4.3.7",
     "depcheck": "^1.4.2",
-    "eslint": "^8.27.0",
+    "eslint": "^8.45.0",
+    "eslint-config-exp": "^0.6.2",
     "eslint-plugin-json": "^3.1.0",
-    "eslint-plugin-prettier": "^5.0.0",
-    "mocha": "^10.1.0",
+    "mocha": "^10.2.0",
     "mocha-cakes-2": "^3.3.0",
-    "nyc": "^15.1.0",
     "prettier": "^3.0.0",
     "supertest": "^6.3.1"
   },

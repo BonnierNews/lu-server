@@ -26,5 +26,5 @@ function clear() {
 module.exports = {
   clear,
   getMetricValue,
-  waitForMetricValue
+  waitForMetricValue,
 };

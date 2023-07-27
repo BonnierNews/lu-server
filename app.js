@@ -15,10 +15,10 @@ function init() {
   app.disable("x-powered-by");
 
   app.use(appendRawBody);
-  app.use(bodyParser.urlencoded({extended: false}));
-  app.use(bodyParser.text({type: "text/*"}));
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.text({ type: "text/*" }));
   const limit = (config.express && config.express.body && config.express.body.limit) || "200kb";
-  app.use(bodyParser.json({limit}));
+  app.use(bodyParser.json({ limit }));
 
   // Don't limit the number of outgoing HTTP requests (defaults to 4 simultaneous requests)
   http.globalAgent.maxSockets = Infinity;

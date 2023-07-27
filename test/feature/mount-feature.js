@@ -1,7 +1,7 @@
 "use strict";
 
 const request = require("supertest");
-const {app} = require("../helpers/app");
+const { app } = require("../helpers/app");
 const expect = require("chai").expect;
 
 Feature("App mounting", () => {
@@ -44,10 +44,10 @@ Feature("App mounting", () => {
             status: "404",
             source: "/unknown",
             detail: "No resource GET /unknown",
-            title: "Not Found"
-          }
+            title: "Not Found",
+          },
         ],
-        meta: {correlationId, clientIp: res.body.meta.clientIp}
+        meta: { correlationId, clientIp: res.body.meta.clientIp },
       });
     });
   });
@@ -69,10 +69,10 @@ Feature("App mounting", () => {
             status: "500",
             title: "Server Error",
             detail: "GET /error: Error: Foo",
-            source: "/error"
-          }
+            source: "/error",
+          },
         ],
-        meta: {correlationId, clientIp: response.body.meta.clientIp}
+        meta: { correlationId, clientIp: response.body.meta.clientIp },
       });
     });
   });

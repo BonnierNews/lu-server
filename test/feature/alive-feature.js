@@ -1,6 +1,6 @@
 "use strict";
 
-const {get} = require("../helpers/request-helper");
+const { get } = require("../helpers/request-helper");
 
 Feature("_alive", () => {
   Scenario("Basic alive check", () => {

@@ -3,7 +3,7 @@
 const config = require("exp-config");
 const expect = require("chai").expect;
 const prometeheus = require("../../lib/prometheus");
-const {get, post} = require("../helpers/request-helper");
+const { get, post } = require("../helpers/request-helper");
 const router = require("../../lib/routes");
 
 Feature("Incoming request metrics", () => {
@@ -152,7 +152,7 @@ Feature("Incoming request metrics", () => {
       });
       let metricsRes;
       Given("a request is made to an epic endpoint with userId", async () => {
-        await post("/epic-endpoint", {userId: "expressen://user-guid"});
+        await post("/epic-endpoint", { userId: "expressen://user-guid" });
       });
       When("requesting the /metrics endpoint", async () => {
         metricsRes = await get("/metrics");
@@ -187,7 +187,7 @@ Feature("Incoming request metrics", () => {
       });
       let metricsRes;
       Given("a request is made to an epic endpoint with userId", async () => {
-        await post("/epic-endpoint", {userId: "user-guid"});
+        await post("/epic-endpoint", { userId: "user-guid" });
       });
       When("requesting the /metrics endpoint", async () => {
         metricsRes = await get("/metrics");
@@ -220,7 +220,7 @@ Feature("Incoming request metrics", () => {
       });
       let metricsRes;
       Given("a request is made to an epic endpoint with userId", async () => {
-        await post("/epic-endpoint", {userId: 123456});
+        await post("/epic-endpoint", { userId: 123456 });
       });
       When("requesting the /metrics endpoint", async () => {
         metricsRes = await get("/metrics");
@@ -253,7 +253,7 @@ Feature("Incoming request metrics", () => {
       });
       let metricsRes;
       Given("a request is made to an epic endpoint with userId", async () => {
-        await post("/epic-endpoint", {namespace: "expressen"});
+        await post("/epic-endpoint", { namespace: "expressen" });
       });
       When("requesting the /metrics endpoint", async () => {
         metricsRes = await get("/metrics");
@@ -297,5 +297,5 @@ function getCounterMetric(metricsRes, metricName) {
   const labels = metric.substring(metric.indexOf("{"), metric.indexOf("}") + 1);
   const count = metric.split(" ")[1];
 
-  return {name, labels, count};
+  return { name, labels, count };
 }
