@@ -22,7 +22,6 @@ function buildApp(routes) {
 
 module.exports = {
   buildApp,
-  prometheus: require("./lib/prometheus"),
   shutdownHandler,
   sigtermHandler,
   errorHelper: require("./lib/render-error"),

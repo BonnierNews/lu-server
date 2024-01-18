@@ -2,7 +2,6 @@
 
 const config = require("exp-config");
 const expect = require("chai").expect;
-const prometeheus = require("../../lib/prometheus");
 const { get, post } = require("../helpers/request-helper");
 const router = require("../../lib/routes");
 
