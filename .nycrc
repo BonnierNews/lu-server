@@ -7,8 +7,6 @@
   "functions": "82",
   "lines": "90",
   "exclude": [
-    "lib/metrics-aws.js",
-    "lib/metrics-gcp.js",
     "lib/metrics.js",
     "test/*"
   ]
