@@ -1,6 +1,6 @@
 {
   "name": "lu-server",
-  "version": "6.1.1",
+  "version": "6.1.2",
   "engines": {
     "node": ">=16 <=18",
     "yarn": "please use npm"
@@ -23,7 +23,7 @@
     "check-coverage": "c8 check-coverage"
   },
   "dependencies": {
-    "@bonniernews/gcp-push-metrics": "^3.1.0",
+    "@bonniernews/gcp-push-metrics": "^4.0.0",
     "@moebius/http-graceful-shutdown": "^1.1.0",
     "body-parser": "^1.20.1",
     "camelcase": "^6.0.0",
