@@ -1,8 +1,7 @@
-"use strict";
+import request from "supertest";
+import { expect } from "chai";
 
-const request = require("supertest");
-const { app } = require("../helpers/app");
-const expect = require("chai").expect;
+import { app } from "../helpers/app.js";
 
 Feature("App mounting", () => {
   Scenario("Mounting routes to an app", () => {

@@ -1,6 +1,4 @@
-"use strict";
-
-const { get } = require("../helpers/request-helper");
+import { get } from "../helpers/request-helper.js";
 
 Feature("sigterm is received", () => {
   Scenario("_status should return 500", () => {

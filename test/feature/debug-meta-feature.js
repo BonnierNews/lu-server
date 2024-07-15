@@ -1,8 +1,7 @@
-"use strict";
+import request from "supertest";
+import { expect } from "chai";
 
-const request = require("supertest");
-const { app, requests, reset } = require("../helpers/app");
-const expect = require("chai").expect;
+import { app, requests, reset } from "../helpers/app.js";
 
 Feature("Debug meta attached to requests", () => {
   Scenario("No debugMeta is sent", () => {

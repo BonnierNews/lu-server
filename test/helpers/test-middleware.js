@@ -1,5 +1,3 @@
-"use strict";
-
 function mockResponse(callback) {
   const expected = { next: false };
   const res = {
@@ -16,12 +14,10 @@ function mockResponse(callback) {
   return res;
 }
 
-function testMiddleware(middleware, request) {
+export default function testMiddleware(middleware, request) {
   return new Promise((resolve) => {
     middleware(request, mockResponse(resolve), () => {
       resolve({ next: true, body: request.body, query: request.query, params: request.params });
     });
   });
 }
-
-module.exports = testMiddleware;

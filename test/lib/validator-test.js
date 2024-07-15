@@ -1,8 +1,7 @@
-"use strict";
+import joi from "joi";
 
-const joi = require("joi");
-const validator = require("../../lib/validator");
-const testMiddleware = require("../helpers/test-middleware");
+import validator from "../../lib/validator.js";
+import testMiddleware from "../helpers/test-middleware.js";
 
 const bodySchema = joi.object().keys({
   field1: joi.string().min(1).required(),

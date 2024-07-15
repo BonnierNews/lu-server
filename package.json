@@ -1,6 +1,6 @@
 {
   "name": "lu-server",
-  "version": "7.1.0",
+  "version": "8.0.0",
   "engines": {
     "node": ">=18 <=20",
     "yarn": "please use npm"
@@ -12,6 +12,7 @@
   "bugs": "https://github.com/BonnierNews/lu-server/issues",
   "author": "LU Infra Team",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "mocha": "mocha",
     "lint": "eslint .",

@@ -1,13 +1,15 @@
-"use strict";
+import config from "exp-config";
 
-const config = require("exp-config");
-const notFoundHandler = require("./lib/notFoundHandler");
-const errorHandler = require("./lib/errorHandler");
-const shutdownHandler = require("./lib/shutdownHandler");
-const sigtermHandler = require("./lib/handle-sigterm");
+import notFoundHandler from "./lib/notFoundHandler.js";
+import errorHandler from "./lib/errorHandler.js";
+import appBuilder from "./app.js";
+import shutdownHandler from "./lib/shutdownHandler.js";
+import sigtermHandler from "./lib/handle-sigterm.js";
+import errorHelper from "./lib/render-error.js";
+import validator from "./lib/validator.js";
 
-function buildApp(routes) {
-  const app = require("./app")();
+export function buildApp(routes) {
+  const app = appBuilder();
   if (routes) {
     app.use(routes);
   }
@@ -20,10 +22,12 @@ function buildApp(routes) {
   return app;
 }
 
-module.exports = {
+export { shutdownHandler, sigtermHandler, errorHelper, validator };
+
+export default {
   buildApp,
   shutdownHandler,
   sigtermHandler,
-  errorHelper: require("./lib/render-error"),
-  validator: require("./lib/validator"),
+  errorHelper,
+  validator,
 };

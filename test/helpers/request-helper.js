@@ -1,13 +1,13 @@
-"use strict";
-const supertest = require("supertest");
-const { app } = require("./app");
-const pathLib = require("path");
+import supertest from "supertest";
+import pathLib from "path";
 
-function get(path) {
+import { app } from "./app.js";
+
+export function get(path) {
   return supertest(app).get(path).set("correlation-id", caller());
 }
 
-function post(path, body) {
+export function post(path, body) {
   const callingFunction = caller();
   return supertest(app).post(path).set("correlation-id", callingFunction).send(body);
 }
@@ -45,7 +45,4 @@ function caller(depth) {
   return `./${calleePath}:${frame.getLineNumber()}`;
 }
 
-module.exports = {
-  get,
-  post,
-};
+export default { get, post };
