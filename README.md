@@ -8,23 +8,12 @@ The base server for lu apps
 
 ```js
 import express from "express";
-import { buildApp, shutdownHandler } from "lu-server";
+import { init } from "lu-server";
 
 const routes = express.Router();
 routes.get("/", (req, res) => res.status(200).send("Hello World!"));
-const app = buildApp(routes);
 
-const server = app.listen(3000, () => {
-  console.log(`listening on port ${server.address().port}`);
-});
-const terminateServer = shutdownHandler(server);
-process.on("SIGTERM", async () => {
-  try {
-    await terminateServer();
-    process.exit(0); // eslint-disable-line n/no-process-exit
-  } catch (error) {
-    logger.error(error);
-    process.exit(1); // eslint-disable-line n/no-process-exit
-  }
-});
+if (import.meta.url.endsWith(process.argv[1])) {
+  init(routes)
+}
 ```
