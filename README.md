@@ -13,7 +13,11 @@ import { init } from "lu-server";
 const routes = express.Router();
 routes.get("/", (req, res) => res.status(200).send("Hello World!"));
 
+const { app, start } = init(routes);
+
 if (import.meta.url.endsWith(process.argv[1])) {
-  init(routes)
+  start();
 }
+
+export default app; // for testing
 ```
