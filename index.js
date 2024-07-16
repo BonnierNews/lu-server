@@ -1,33 +1,30 @@
 import config from "exp-config";
+import { logger } from "lu-logger";
+import * as fs from "fs";
+import * as path from "path";
 
-import notFoundHandler from "./lib/notFoundHandler.js";
-import errorHandler from "./lib/errorHandler.js";
-import appBuilder from "./app.js";
 import shutdownHandler from "./lib/shutdownHandler.js";
-import sigtermHandler from "./lib/handle-sigterm.js";
-import errorHelper from "./lib/render-error.js";
+import { registerServerTerminator } from "./lib/handle-sigterm.js";
+import { render404, render409, renderError } from "./lib/render-error.js";
 import validator from "./lib/validator.js";
+import buildApp from "./lib/build-app.js";
 
-export function buildApp(routes) {
-  const app = appBuilder();
-  if (routes) {
-    app.use(routes);
-  }
+export function init(routes) {
+  const app = buildApp(routes);
 
-  if (config.logClientIp) app.enable("trust proxy");
+  const start = () => {
+    const packageInfo = JSON.parse(fs.readFileSync(path.join(process.cwd(), "package.json")));
 
-  app.use(notFoundHandler);
-  app.use(errorHandler);
-
-  return app;
+    const port = Number(process.env.PORT) || config.port || 3000;
+    const server = app.listen(port, () => {
+      logger.info(`${packageInfo.name} listening on port ${server.address().port}`);
+    });
+    logger.info("initiating sigterm handler with shutdown handler");
+    registerServerTerminator(shutdownHandler(server));
+  };
+  return { app, start };
 }
 
-export { shutdownHandler, sigtermHandler, errorHelper, validator };
+export { render404, render409, renderError, shutdownHandler, validator };
 
-export default {
-  buildApp,
-  shutdownHandler,
-  sigtermHandler,
-  errorHelper,
-  validator,
-};
+export default { init, render404, render409, renderError, shutdownHandler, validator };

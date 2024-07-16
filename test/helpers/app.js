@@ -1,6 +1,6 @@
 import express from "express";
 
-import { buildApp } from "../../index.js";
+import buildApp from "../../lib/build-app.js";
 import { initHandleSigterm } from "../../lib/handle-sigterm.js";
 
 export const requests = [];
