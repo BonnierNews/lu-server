@@ -1,7 +1,6 @@
-"use strict";
+import assert from "assert";
 
-const { render404, render409, renderError } = require("../../lib/render-error");
-const assert = require("assert");
+import { render404, render409, renderError } from "../../lib/render-error.js";
 
 const expectedResultRender404 = {
   errors: [

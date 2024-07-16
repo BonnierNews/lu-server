@@ -1,15 +1,14 @@
-"use strict";
+import express from "express";
+import http from "http";
+import https from "https";
+import bodyParser from "body-parser";
+import config from "exp-config";
 
-const express = require("express");
-const http = require("http");
-const https = require("https");
-const bodyParser = require("body-parser");
-const middleware = require("./lib/middleware.js");
-const routes = require("./lib/routes.js");
-const config = require("exp-config");
-const sigtermHandler = require("./lib/handle-sigterm");
+import middleware from "./lib/middleware.js";
+import routes from "./lib/routes.js";
+import { initHandleSigterm } from "./lib/handle-sigterm.js";
 
-function init() {
+export default function init() {
   const app = express();
 
   app.disable("x-powered-by");
@@ -26,7 +25,7 @@ function init() {
 
   process.env.TZ = "Europe/Stockholm";
   if (config.luServerShutdown) {
-    sigtermHandler.initHandleSigterm();
+    initHandleSigterm();
   }
 
   app.use(middleware);
@@ -42,5 +41,3 @@ function appendRawBody(req, res, next) {
   });
   next();
 }
-
-module.exports = init;

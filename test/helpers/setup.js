@@ -1,4 +1,5 @@
-"use strict";
+import "mocha-cakes-2";
+import chai from "chai";
 
 // Make sure dates are displayed in the correct timezone
 process.env.TZ = "Europe/Stockholm";
@@ -7,11 +8,6 @@ process.env.TZ = "Europe/Stockholm";
 // real elasticsearch indices etc.
 // This file is required with ./test/mocha.opts
 process.env.NODE_ENV = "test";
-
-// Setup common test libraries
-require("mocha-cakes-2");
-
-const chai = require("chai");
 
 chai.config.truncateThreshold = 0;
 chai.config.includeStack = true;
