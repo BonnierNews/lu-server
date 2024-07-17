@@ -1,6 +1,6 @@
 {
   "name": "lu-server",
-  "version": "8.1.0",
+  "version": "8.2.0",
   "engines": {
     "node": ">=18 <=20",
     "yarn": "please use npm"
@@ -31,7 +31,7 @@
     "exp-config": "^4.2.0",
     "express": "^4.19.2",
     "joi": "^17.7.0",
-    "lu-logger": "github:BonnierNews/lu-logger#semver:^7.3.1",
+    "lu-logger": "github:BonnierNews/lu-logger#semver:^8.0.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
