@@ -24,6 +24,22 @@ describe("Config validator", () => {
   it("should throw error", () => {
     const config = {
       envName: "test",
+      logClientIp: true,
+      express: { body: { limit: "200kb" } },
+      items: [
+        { name: "REPLACED_BY_ENV" },
+        {
+          name: "yello",
+          value: "REPLACED_BY_ENV",
+        },
+      ],
+    };
+    expect(() => validateConfig(config)).to.throw("Config contains invalid values");
+  });
+
+  it("should throw error", () => {
+    const config = {
+      envName: "test",
       logClientIp: "REPLACED_BY_ENV",
       express: { body: { limit: "REPLACED_BY_ENV" } },
     };
