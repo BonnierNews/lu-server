@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import validateConfig from "../../lib/configValidator.js";
+import validateConfig from "../../lib/config-validator.js";
 
 describe("Config validator", () => {
   it("should not return anything", () => {
